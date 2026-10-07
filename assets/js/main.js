@@ -44,6 +44,83 @@
   });
   tickCurrencies(document);
 
+  /* ---------- Photo strip: duplicate once for a seamless loop ---------- */
+  document.querySelectorAll('.strip__track').forEach((track) => {
+    const clone = track.firstElementChild.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.querySelectorAll('button').forEach((b) => { b.tabIndex = -1; b.dataset.clone = '1'; });
+    track.appendChild(clone);
+  });
+
+  /* ---------- Lightbox for every photograph ---------- */
+  const lb = document.getElementById('lightbox');
+  const lbImg = lb.querySelector('.lb__img');
+  const lbCount = lb.querySelector('[data-lb-count]');
+  const photos = [...new Set([...document.querySelectorAll('[data-photo]:not([data-clone])')].map((el) => el.dataset.photo))];
+  let lbIndex = 0;
+  let lbReturn = null;
+  const showPhoto = (i) => {
+    lbIndex = (i + photos.length) % photos.length;
+    lbImg.src = `assets/photos/lg/${photos[lbIndex]}.webp`;
+    lbCount.textContent = `${lbIndex + 1} / ${photos.length}`;
+    [-1, 1].forEach((d) => { const pre = new Image(); pre.src = `assets/photos/lg/${photos[(lbIndex + d + photos.length) % photos.length]}.webp`; });
+  };
+  const openLb = (name, from) => {
+    lbReturn = from;
+    showPhoto(Math.max(0, photos.indexOf(name)));
+    lb.hidden = false;
+    root.classList.add('lb-open');
+    if (lenis) lenis.stop();
+    if (hasGsap && !reduced) gsap.fromTo(lb, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+    lb.querySelector('.lb__close').focus({ preventScroll: true });
+  };
+  const closeLb = () => {
+    if (lb.hidden) return;
+    lb.hidden = true;
+    root.classList.remove('lb-open');
+    if (lenis && !openId) lenis.start();
+    if (lbReturn) lbReturn.focus({ preventScroll: true });
+  };
+  document.addEventListener('click', (e) => {
+    const ph = e.target.closest('[data-photo]');
+    if (ph) { e.preventDefault(); openLb(ph.dataset.photo, ph); return; }
+    if (e.target.closest('[data-lb-next]')) showPhoto(lbIndex + 1);
+    else if (e.target.closest('[data-lb-prev]')) showPhoto(lbIndex - 1);
+    else if (e.target.closest('[data-lb-close]') || e.target === lb) closeLb();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (lb.hidden) return;
+    if (e.key === 'ArrowRight') showPhoto(lbIndex + 1);
+    if (e.key === 'ArrowLeft') showPhoto(lbIndex - 1);
+    if (e.key === 'Escape') { e.stopImmediatePropagation(); closeLb(); }
+  }, true);
+  let touchX = null;
+  lb.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) showPhoto(lbIndex + (dx < 0 ? 1 : -1));
+    touchX = null;
+  });
+
+  /* ---------- About photo: tilt with the pointer, tags pop out ---------- */
+  document.querySelectorAll('.me-wrap').forEach((wrap) => {
+    const card = wrap.querySelector('[data-tilt]');
+    const glare = wrap.querySelector('.me__glare');
+    if (!reduced) {
+      wrap.addEventListener('pointermove', (e) => {
+        if (e.pointerType !== 'mouse') return;
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width; const py = (e.clientY - r.top) / r.height;
+        card.style.transform = `rotateY(${(px - 0.5) * 18}deg) rotateX(${(0.5 - py) * 14}deg) scale(1.03)`;
+        glare.style.setProperty('--gx', `${px * 100}%`);
+        glare.style.setProperty('--gy', `${py * 100}%`);
+      });
+      wrap.addEventListener('pointerleave', () => { card.style.transform = ''; });
+    }
+    wrap.addEventListener('click', () => wrap.classList.toggle('is-on'));
+  });
+
   /* ---------- Case studies: open over the page, always from the top ---------- */
   const overlay = document.getElementById('case');
   const caseBody = overlay.querySelector('[data-case-body]');
@@ -122,7 +199,7 @@
     if (next) { e.preventDefault(); openCase(next.dataset.caseOpen); return; }
     if (e.target.closest('[data-case-close]')) closeCase();
   });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCase(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lb.hidden) closeCase(); });
   const fromHash = location.hash.replace('#', '');
   if (fromHash && document.getElementById(`case-${fromHash}`)) openCase(fromHash);
 
@@ -179,13 +256,28 @@
     document.addEventListener('pointerenter', () => gsap.to(cur, { opacity: 1, duration: 0.2 }));
   }
 
-  /* ---------- Hero entrance ---------- */
+  /* ---------- Hero entrance: prints get pinned one by one ---------- */
   gsap.timeline({ delay: 0.15 })
     .from('.hero__word', { yPercent: 60, opacity: 0, duration: 0.9, stagger: 0.09 })
     .from('[data-hero-sub]', { y: 18, opacity: 0, duration: 0.8 }, 0.3)
     .from('.side, .socials', { opacity: 0, duration: 0.8 }, 0.3)
-    .from('[data-scene] .scene__img', { y: 50, scale: 0.97, opacity: 0, duration: 1.3, ease: 'power4.out' }, 0.4)
-    .from('[data-scene] .hot__dot', { scale: 0, duration: 0.6, stagger: 0.08, ease: 'back.out(2.5)' }, 1.2);
+    .from('.wall .print:not(.print--me) .print__card', {
+      y: -70, opacity: 0, scale: 1.15, rotation: () => gsap.utils.random(-25, 25),
+      duration: 0.9, stagger: 0.07, ease: 'back.out(1.4)', clearProps: 'transform,opacity',
+    }, 0.45)
+    .from('.wall .print--me .print__card', { y: 60, opacity: 0, scale: 0.85, duration: 1.1, ease: 'back.out(1.6)', clearProps: 'transform,opacity' }, 0.6)
+    .from('.wall .note', { opacity: 0, duration: 0.6, stagger: 0.12 }, 1.2);
+
+  // the wall drifts gently with the pointer (each print at its own depth)
+  const wall = document.querySelector('[data-wall]');
+  if (wall && finePointer) {
+    wall.querySelectorAll('[data-depth]').forEach((el) => el.style.setProperty('--d', el.dataset.depth));
+    const pos = { x: 0, y: 0 };
+    const set = () => { wall.style.setProperty('--px', pos.x.toFixed(2)); wall.style.setProperty('--py', pos.y.toFixed(2)); };
+    window.addEventListener('pointermove', (e) => {
+      gsap.to(pos, { x: (e.clientX / innerWidth - 0.5) * -24, y: (e.clientY / innerHeight - 0.5) * -18, duration: 1.2, ease: 'power3.out', onUpdate: set, overwrite: true });
+    }, { passive: true });
+  }
 
   /* ---------- Scroll-built animations ---------- */
   const build = () => {

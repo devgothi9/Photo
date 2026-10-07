@@ -11,7 +11,6 @@
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/img/hero-desk.webp" as="image">
   <link rel="stylesheet" href="assets/css/style.css">
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
@@ -63,23 +62,21 @@
     <h1 class="hero__title" data-hero><span class="hero__word">Hi,</span> <span class="hero__word">I'm</span> <span class="hero__word pink">Dev</span></h1>
     <p class="hero__sub" data-hero-sub>Full-stack engineer building secure, scalable B2C products</p>
 
-    <div class="scene" data-scene>
-      <img class="scene__img" src="assets/img/hero-desk.webp" alt="Dev at his desk under a shelf of books, plants, a camera, games and board games" width="1254" height="1079">
-      <a class="hot hot--pill" href="#projects" style="--l:12.60%;--t:44.95%;--w:13.88%;--h:5.56%" data-open="My Works" aria-label="My Works"></a>
-      <a class="hot hot--pill" href="#about" style="--l:65.63%;--t:56.53%;--w:13.32%;--h:5.65%" data-open="About me" aria-label="About me"></a>
-      <a class="hot hot--big" href="#about" style="--l:44.66%;--t:35.68%;--w:30.70%;--h:64.32%" data-open="That's me" aria-label="That's me"><span class="hot__dot"></span></a>
-      <a class="hot" href="#projects" style="--l:10.37%;--t:52.18%;--w:20.89%;--h:17.61%" data-open="Projects" aria-label="Projects"><span class="hot__dot"></span></a>
-      <a class="hot" href="#projects" style="--l:33.89%;--t:41.43%;--w:10.77%;--h:22.24%" data-open="What I'm building" aria-label="What I'm building"></a>
-      <a class="hot" href="#life" style="--l:15.95%;--t:24.56%;--w:19.94%;--h:12.79%" data-open="Photography" aria-label="Photography"><span class="hot__dot"></span></a>
-      <a class="hot" href="#life" style="--l:89.47%;--t:60.89%;--w:5.58%;--h:7.04%" data-open="Photography" aria-label="Photography"></a>
-      <a class="hot" href="#about" style="--l:18.98%;--t:10.29%;--w:12.76%;--h:9.45%" data-open="Reading list" aria-label="Reading list"><span class="hot__dot"></span></a>
-      <a class="hot" href="#life" style="--l:32.06%;--t:11.58%;--w:5.42%;--h:8.34%" data-open="Off the clock" aria-label="Off the clock"></a>
-      <a class="hot" href="#life" style="--l:44.26%;--t:6.02%;--w:16.75%;--h:13.72%" data-open="Plants & patience" aria-label="Plants & patience"></a>
-      <a class="hot" href="#life" style="--l:67.15%;--t:9.92%;--w:19.38%;--h:10.01%" data-open="Games & movies" aria-label="Games & movies"><span class="hot__dot"></span></a>
-      <a class="hot" href="#life" style="--l:44.26%;--t:24.56%;--w:16.35%;--h:12.79%" data-open="Music" aria-label="Music"></a>
-      <a class="hot" href="#life" style="--l:67.38%;--t:22.89%;--w:19.14%;--h:14.46%" data-open="Board games" aria-label="Board games"><span class="hot__dot"></span></a>
-      <a class="hot" href="#life" style="--l:2.23%;--t:71.64%;--w:20.26%;--h:10.19%" data-open="Collectibles" aria-label="Collectibles"></a>
-      <a class="hot" href="#projects" style="--l:69.22%;--t:65.15%;--w:21.05%;--h:5.75%" data-open="Sketching ideas" aria-label="Sketching ideas"></a>
+    <div class="wall" data-wall aria-label="My photographs">
+      <div class="print print--me" style="--x:50;--y:48;--w:21;--r:-2deg;--mx:50;--my:46;--mw:50" data-depth="0.3"><a class="print__card" href="#about" data-open="About me" aria-label="About me"><img src="assets/me/dev.webp" alt="Dev Gothi" width="800" height="1000"><span class="print__caption">that's me :)</span></a></div>
+      <div class="print" style="--x:16;--y:25;--w:19;--r:-6deg;--mx:22;--my:13;--mw:40" data-depth="0.6"><button class="print__card" type="button" data-photo="1536" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/1536.webp" alt="Photograph by Dev" width="720" height="480"></button></div>
+      <div class="print" style="--x:84;--y:24;--w:18;--r:5deg;--mx:78;--my:15;--mw:38" data-depth="0.8"><button class="print__card" type="button" data-photo="4901" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/4901.webp" alt="Photograph by Dev" width="720" height="480"></button></div>
+      <div class="print print--desk" style="--x:8;--y:66;--w:11;--r:4deg" data-depth="0.5"><button class="print__card" type="button" data-photo="3636" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/3636.webp" alt="Photograph by Dev" width="480" height="720"></button></div>
+      <div class="print" style="--x:29;--y:74;--w:17;--r:3deg;--mx:24;--my:78;--mw:40" data-depth="0.9"><button class="print__card" type="button" data-photo="3014" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/3014.webp" alt="Photograph by Dev" width="720" height="480"></button></div>
+      <div class="print" style="--x:72;--y:76;--w:17;--r:-4deg;--mx:76;--my:80;--mw:40" data-depth="0.7"><button class="print__card" type="button" data-photo="2810" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/2810.webp" alt="Photograph by Dev" width="720" height="489"></button></div>
+      <div class="print print--desk" style="--x:92;--y:66;--w:10.5;--r:-5deg" data-depth="0.4"><button class="print__card" type="button" data-photo="2348" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/2348.webp" alt="Photograph by Dev" width="480" height="720"></button></div>
+      <div class="print print--desk" style="--x:34;--y:19;--w:12;--r:4deg" data-depth="1.0"><button class="print__card" type="button" data-photo="4272" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/4272.webp" alt="Photograph by Dev" width="720" height="524"></button></div>
+      <div class="print print--desk" style="--x:66;--y:18;--w:13;--r:-3deg" data-depth="0.6"><button class="print__card" type="button" data-photo="2402" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/2402.webp" alt="Photograph by Dev" width="720" height="480"></button></div>
+      <div class="print print--desk" style="--x:24;--y:48;--w:10;--r:-8deg" data-depth="1.2"><button class="print__card" type="button" data-photo="moon" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/moon.webp" alt="Photograph by Dev" width="720" height="480"></button></div>
+      <div class="print print--desk" style="--x:77;--y:48;--w:11;--r:6deg" data-depth="1.1"><button class="print__card" type="button" data-photo="4810" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/4810.webp" alt="Photograph by Dev" width="720" height="480"></button></div>
+      <a class="note note--yellow" href="#projects" style="--x:41;--y:91;--r:-4deg;--mx:27;--my:96" data-depth="1.3" data-open="My Works">My Works →</a>
+      <a class="note note--pink" href="#about" style="--x:60;--y:92;--r:3deg;--mx:73;--my:97" data-depth="1.4" data-open="About me">About me ☺</a>
+      <a class="note note--blue note--desk" href="#life" style="--x:88;--y:92;--r:-2deg" data-depth="1.2" data-open="My photography">my photos ↗</a>
     </div>
   </section>
 
@@ -164,7 +161,16 @@
   <!-- ================= ABOUT ================= -->
   <section class="section wrap" id="about" data-section="about">
     <h2 class="title" data-reveal>About Me</h2>
-    <figure class="me" data-reveal><img src="assets/me/dev.webp" alt="Dev Gothi smiling in an autumn forest" width="800" height="1000" loading="lazy"></figure>
+    <div class="me-wrap" data-reveal>
+      <figure class="me" data-tilt>
+        <img src="assets/me/dev.webp" alt="Dev Gothi smiling in an autumn forest" width="800" height="1000" loading="lazy">
+        <span class="me__glare" aria-hidden="true"></span>
+      </figure>
+      <span class="me__tag me__tag--1" aria-hidden="true">Founder</span>
+      <span class="me__tag me__tag--2" aria-hidden="true">Photographer</span>
+      <span class="me__tag me__tag--3" aria-hidden="true">Ottawa, ON</span>
+      <span class="me__tag me__tag--4" aria-hidden="true">UI/UX nerd</span>
+    </div>
     <h3 class="about__hi" data-reveal>Hi, I'm Dev.</h3>
     <p class="about__lead" data-reveal>Computer engineering student and founder in Ottawa. I build products people trust, from the database to the last pixel.</p>
 
@@ -172,8 +178,10 @@
       <div>
         <h4 class="about__h" data-reveal>My Super Powers</h4>
         <div class="chips" data-reveal>
-          <span class="chip">Full-Stack</span><span class="chip">AI Automation</span><span class="chip">Computer Vision</span>
-          <span class="chip">Data</span><span class="chip">Stripe</span><span class="chip">DevOps</span>
+          <span class="chip">UI Design</span><span class="chip">UX Design</span><span class="chip">Figma</span>
+          <span class="chip">Prototyping</span><span class="chip">Wireframing</span><span class="chip">Design Systems</span>
+          <span class="chip">Interaction Design</span><span class="chip">Full-Stack</span><span class="chip">AI Automation</span>
+          <span class="chip">Computer Vision</span><span class="chip">Data</span><span class="chip">DevOps</span>
         </div>
         <h4 class="about__h" data-reveal>My Roots &amp; Foundation</h4>
         <p class="about__p" data-reveal>Computer Engineering Technology at Algonquin College, Ottawa (2027). Co-led Tech-Xtreme, a national-level tech fest, and mentor underprivileged kids.</p>
@@ -186,12 +194,12 @@
             <div><h3>Founder &amp; Full-Stack Developer</h3><p>SafeSpace<br>Jan 2025 – Present</p></div>
           </div>
           <div class="journey__item" data-reveal>
-            <span class="journey__logo" style="background:#e8f4ee"><svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="9" fill="#0b6e4f"/><path d="M20 14h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#fff"/></svg></span>
-            <div><h3>IT Service Desk Co-op</h3><p>Muskoka Algonquin Healthcare<br>Jan 2025 – Dec 2025</p></div>
+            <span class="journey__logo" style="background:#e3efe8"><svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="10" fill="#123d2b"/><path d="M15 20v-4a1 1 0 0 1 1-1h4M28 15h4a1 1 0 0 1 1 1v4M33 28v4a1 1 0 0 1-1 1h-4M20 33h-4a1 1 0 0 1-1-1v-4M18 24h12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+            <div><h3>Founder</h3><p>Retail Vision — Smart ScanMart<br>2025 – Present</p></div>
           </div>
           <div class="journey__item" data-reveal>
-            <span class="journey__logo" style="background:#e9f3ec"><svg viewBox="0 0 48 48"><path d="M24 6 42 40H6Z" fill="#1f7a45"/><path d="M24 18l9 16H15Z" fill="#fff"/></svg></span>
-            <div><h3>Peer Tutor — Calculus &amp; DBMS</h3><p>Algonquin College<br>May 2024 – Dec 2024</p></div>
+            <span class="journey__logo" style="background:#e8f4ee"><svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="9" fill="#0b6e4f"/><path d="M20 14h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#fff"/></svg></span>
+            <div><h3>IT Service Desk Co-op</h3><p>Muskoka Algonquin Healthcare<br>Jan 2025 – Dec 2025</p></div>
           </div>
           <div class="journey__item" data-reveal>
             <span class="journey__logo" style="background:#e9f3ec"><svg viewBox="0 0 48 48"><path d="M24 8 44 18 24 28 4 18Z" fill="#1f7a45"/><path d="M12 22v9c0 3 5.4 5 12 5s12-2 12-5v-9l-12 6Z" fill="#1f7a45" opacity=".75"/></svg></span>
@@ -208,17 +216,41 @@
     <div class="life">
       <div class="life__text">
         <h3 class="life__h" data-reveal>Behind the <span class="pink">lens.</span></h3>
-        <p class="life__p" data-reveal>I love taking photographs. It's how I slow down and notice light, people and places.</p>
+        <p class="life__p" data-reveal>I love taking photographs: birds, city lights, sunsets over the water. Every photo here is mine.</p>
         <div data-reveal><a class="btn btn--pink" href="https://devphotography.vercel.app/" target="_blank" rel="noopener">See my photography <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
         <p class="life__also" data-reveal>Off the clock: gaming, movies, board games and a good book.</p>
       </div>
-      <a class="polaroids" href="https://devphotography.vercel.app/" target="_blank" rel="noopener" data-open="See photos" aria-label="Open my photography site" data-reveal>
-        <span class="pol" style="--i:-2"><span class="frame" style="--fallback:linear-gradient(165deg,#c98a4b,#3b2414)"><img src="assets/photos/01.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></span></span>
-        <span class="pol" style="--i:-1"><span class="frame" style="--fallback:linear-gradient(200deg,#6d8fa8,#1b2733)"><img src="assets/photos/02.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></span></span>
-        <span class="pol" style="--i:2"><span class="frame" style="--fallback:linear-gradient(170deg,#b5654f,#2a1210)"><img src="assets/photos/03.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></span></span>
-        <span class="pol" style="--i:1"><span class="frame" style="--fallback:linear-gradient(150deg,#7e9a5c,#1c2614)"><img src="assets/photos/04.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></span></span>
-        <span class="pol" style="--i:0"><span class="frame" style="--fallback:linear-gradient(185deg,#d9a35a,#4a2a12)"><img src="assets/photos/05.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></span></span>
-      </a>
+      <div class="polaroids" data-reveal>
+        <button class="pol" type="button" style="--i:-2" data-photo="4919" data-open="View photo" aria-label="View photograph"><span class="frame"><img src="assets/photos/sm/4919.webp" alt="Photograph by Dev" loading="lazy"></span></button>
+        <button class="pol" type="button" style="--i:-1" data-photo="2364" data-open="View photo" aria-label="View photograph"><span class="frame"><img src="assets/photos/sm/2364.webp" alt="Photograph by Dev" loading="lazy"></span></button>
+        <button class="pol" type="button" style="--i:2" data-photo="3277" data-open="View photo" aria-label="View photograph"><span class="frame"><img src="assets/photos/sm/3277.webp" alt="Photograph by Dev" loading="lazy"></span></button>
+        <button class="pol" type="button" style="--i:1" data-photo="4385" data-open="View photo" aria-label="View photograph"><span class="frame"><img src="assets/photos/sm/4385.webp" alt="Photograph by Dev" loading="lazy"></span></button>
+        <button class="pol" type="button" style="--i:0" data-photo="2690" data-open="View photo" aria-label="View photograph"><span class="frame"><img src="assets/photos/sm/2690.webp" alt="Photograph by Dev" loading="lazy"></span></button>
+      </div>
+    </div>
+    <div class="strip" data-reveal aria-label="More of my photographs">
+      <div class="strip__track">
+        <div class="strip__group">
+          <button class="strip__item" type="button" data-photo="2940" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/2940.webp" alt="Photograph by Dev" width="720" height="480" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="1585" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/1585.webp" alt="Photograph by Dev" width="720" height="480" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="2346" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/2346.webp" alt="Photograph by Dev" width="480" height="720" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="2895" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/2895.webp" alt="Photograph by Dev" width="720" height="512" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="0806" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/0806.webp" alt="Photograph by Dev" width="410" height="720" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="2427" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/2427.webp" alt="Photograph by Dev" width="720" height="467" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="bird" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/bird.webp" alt="Photograph by Dev" width="720" height="459" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="4406" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/4406.webp" alt="Photograph by Dev" width="720" height="480" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="2680" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/2680.webp" alt="Photograph by Dev" width="720" height="480" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="4347" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/4347.webp" alt="Photograph by Dev" width="720" height="479" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="2929" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/2929.webp" alt="Photograph by Dev" width="720" height="462" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="3736" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/3736.webp" alt="Photograph by Dev" width="720" height="480" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="4415" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/4415.webp" alt="Photograph by Dev" width="720" height="480" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="0808" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/0808.webp" alt="Photograph by Dev" width="403" height="720" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="1245" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/1245.webp" alt="Photograph by Dev" width="720" height="480" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="2897" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/2897.webp" alt="Photograph by Dev" width="720" height="480" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="2395" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/2395.webp" alt="Photograph by Dev" width="720" height="480" loading="lazy"></button>
+          <button class="strip__item" type="button" data-photo="2718" data-open="View photo" aria-label="View photograph"><img src="assets/photos/sm/2718.webp" alt="Photograph by Dev" width="720" height="480" loading="lazy"></button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -239,6 +271,14 @@
   </section>
 
 </main>
+
+<!-- ================= PHOTO LIGHTBOX ================= -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Photograph" hidden>
+  <button class="lb__btn lb__close" type="button" data-lb-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <button class="lb__btn lb__prev" type="button" data-lb-prev aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <figure class="lb__fig"><img class="lb__img" alt="Photograph by Dev"><figcaption class="lb__cap"><span>Photo by Dev Gothi</span><span data-lb-count></span></figcaption></figure>
+  <button class="lb__btn lb__next" type="button" data-lb-next aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+</div>
 
 <!-- ================= CASE STUDY (opens over the page) ================= -->
 <div class="case" id="case" role="dialog" aria-modal="true" aria-labelledby="case-title" hidden>
@@ -358,11 +398,11 @@
 <template id="case-retail-vision" data-title="Retail Vision">
   <article class="cs">
     <header class="cs-hero wrap">
-      <span class="eyebrow mono" data-reveal>Case study 02 · Design &amp; CV</span>
+      <span class="eyebrow mono" data-reveal>Case study 02 · Founder</span>
       <h1 class="cs-title" data-reveal>Retail Vision</h1>
       <p class="cs-lede" data-reveal>Grocery checkout <span class="pink">without</span> the line.</p>
       <dl class="cs-meta" data-reveal>
-        <div><dt class="mono">Role</dt><dd>Product design &amp; engineering</dd></div>
+        <div><dt class="mono">Role</dt><dd>Founder · design &amp; engineering</dd></div>
         <div><dt class="mono">Timeline</dt><dd>In progress</dd></div>
         <div><dt class="mono">Users</dt><dd>Shopper · Associate · Manager</dd></div>
         <div><dt class="mono">Design</dt><dd><a href="https://www.figma.com/design/eJhV8ln7K7fIuAo1E1W9zR/Untitled?node-id=0-1" target="_blank" rel="noopener">Figma ↗</a> · 39 screens</dd></div>
