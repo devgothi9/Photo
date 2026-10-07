@@ -103,22 +103,18 @@
     touchX = null;
   });
 
-  /* ---------- About photo: tilt with the pointer, tags pop out ---------- */
-  document.querySelectorAll('.me-wrap').forEach((wrap) => {
-    const card = wrap.querySelector('[data-tilt]');
-    const glare = wrap.querySelector('.me__glare');
-    if (!reduced) {
-      wrap.addEventListener('pointermove', (e) => {
-        if (e.pointerType !== 'mouse') return;
-        const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width; const py = (e.clientY - r.top) / r.height;
-        card.style.transform = `rotateY(${(px - 0.5) * 18}deg) rotateX(${(0.5 - py) * 14}deg) scale(1.03)`;
-        glare.style.setProperty('--gx', `${px * 100}%`);
-        glare.style.setProperty('--gy', `${py * 100}%`);
-      });
-      wrap.addEventListener('pointerleave', () => { card.style.transform = ''; });
-    }
-    wrap.addEventListener('click', () => wrap.classList.toggle('is-on'));
+  /* ---------- Portrait: tilts toward the pointer with a soft glare ---------- */
+  document.querySelectorAll('[data-tilt]').forEach((card) => {
+    const glare = card.querySelector('.me__glare');
+    if (reduced) return;
+    card.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width; const py = (e.clientY - r.top) / r.height;
+      card.style.transform = `perspective(900px) rotateY(${(px - 0.5) * 16}deg) rotateX(${(0.5 - py) * 12}deg) scale(1.04)`;
+      if (glare) { glare.style.setProperty('--gx', `${px * 100}%`); glare.style.setProperty('--gy', `${py * 100}%`); }
+    });
+    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
   });
 
   /* ---------- Case studies: open over the page, always from the top ---------- */
@@ -256,17 +252,22 @@
     document.addEventListener('pointerenter', () => gsap.to(cur, { opacity: 1, duration: 0.2 }));
   }
 
-  /* ---------- Hero entrance: prints get pinned one by one ---------- */
+  /* ---------- Hero entrance: portrait, then lines draw out to each role ---------- */
   gsap.timeline({ delay: 0.15 })
     .from('.hero__word', { yPercent: 60, opacity: 0, duration: 0.9, stagger: 0.09 })
     .from('[data-hero-sub]', { y: 18, opacity: 0, duration: 0.8 }, 0.3)
     .from('.side, .socials', { opacity: 0, duration: 0.8 }, 0.3)
-    .from('.wall .print:not(.print--me) .print__card', {
-      y: -70, opacity: 0, scale: 1.15, rotation: () => gsap.utils.random(-25, 25),
-      duration: 0.9, stagger: 0.07, ease: 'back.out(1.4)', clearProps: 'transform,opacity',
-    }, 0.45)
-    .from('.wall .print--me .print__card', { y: 60, opacity: 0, scale: 0.85, duration: 1.1, ease: 'back.out(1.6)', clearProps: 'transform,opacity' }, 0.6)
-    .from('.wall .note', { opacity: 0, duration: 0.6, stagger: 0.12 }, 1.2);
+    .from('.wall .print--me .print__card', { y: 50, opacity: 0, scale: 0.85, rotation: -10, duration: 1.1, ease: 'back.out(1.5)', clearProps: 'transform,opacity' }, 0.45);
+  document.querySelectorAll('.wall__lines path').forEach((path, i) => {
+    const len = path.getTotalLength();
+    gsap.fromTo(path, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 0.8, delay: 1.05 + i * 0.12, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' });
+  });
+  document.querySelectorAll('.wall .xp').forEach((el, i) => {
+    const fromLeft = parseFloat(el.style.getPropertyValue('--x')) < 50;
+    el.animate([{ opacity: 0, translate: `${fromLeft ? -90 : 90}px 24px`, scale: '0.85' }],
+      { duration: 900, delay: 1350 + i * 130, easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)', fill: 'backwards' });
+  });
+  gsap.from('.wall .note', { opacity: 0, duration: 0.6, stagger: 0.12, delay: 2, clearProps: 'opacity' });
 
   // the wall drifts gently with the pointer (each print at its own depth)
   const wall = document.querySelector('[data-wall]');
@@ -322,6 +323,11 @@
     ScrollTrigger.batch(pageReveals, {
       start: 'top 92%', once: true,
       onEnter: (els) => gsap.to(els, { y: 0, opacity: 1, duration: 1, stagger: 0.08 }),
+    });
+
+    // skill chips pop in one after another
+    document.querySelectorAll('.skill .chips').forEach((group) => {
+      gsap.from(group.children, { scale: 0.6, opacity: 0, duration: 0.5, stagger: 0.05, ease: 'back.out(2)', scrollTrigger: { trigger: group, start: 'top 90%' }, clearProps: 'transform,opacity' });
     });
 
     // mood bars grow in

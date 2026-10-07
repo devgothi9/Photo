@@ -15,7 +15,7 @@ Deploy by pointing Vercel / Netlify / GitHub Pages at the repo root. There is no
 
 | Path | What |
 | --- | --- |
-| `index.html` | Home: a wall of Dev's real photographs (click any print to open it; the sticky notes link to sections) → laptop that opens and launches the projects → SafeSpace & Retail Vision cards → About → Life → contact. Both case studies live in `<template>` tags at the bottom and open full-screen over the page (deep links: `#safespace`, `#retail-vision`). |
+| `index.html` | Home: Dev's portrait with his experience pinned around it → About (skills, roots) → laptop that opens and launches the projects → SafeSpace & Retail Vision cards → Life (photography) → contact. Both case studies live in `<template>` tags at the bottom and open full-screen over the page (deep links: `#safespace`, `#retail-vision`). |
 | `assets/css/style.css` | All styles (tokens at the top) |
 | `assets/js/main.js` | Sidebar pill, pink cursor + labels, photo-wall entrance and parallax, lightbox, laptop fly-out, card stacking, case-study overlay, About tilt, reveals |
 | `assets/photos/sm`, `assets/photos/lg` | Dev's photographs (from the devphotography repo) as WebP: small for the page, large for the lightbox |
