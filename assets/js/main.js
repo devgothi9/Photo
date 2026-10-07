@@ -4,11 +4,8 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const hasGsap = typeof window.gsap !== 'undefined';
-  const curtain = document.querySelector('.curtain');
-  const store = {
-    get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
-    set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) { /* private mode */ } },
-  };
+  const motion = hasGsap && !reduced;
+  let lenis = null;
 
   /* ---------- Sidebar: active section pill ---------- */
   const sideItems = [...document.querySelectorAll('.side__item[data-nav]')];
@@ -38,52 +35,119 @@
   });
 
   /* ---------- Currency symbols in the SafeSpace mockup ---------- */
-  document.querySelectorAll('[data-currency]').forEach((el) => {
+  const tickCurrencies = (scope) => scope.querySelectorAll('[data-currency]').forEach((el) => {
+    if (el.dataset.ticking) return;
+    el.dataset.ticking = '1';
     const list = el.dataset.currency.split(',');
     let i = 0;
     setInterval(() => { i = (i + 1) % list.length; el.textContent = list[i]; }, 1600);
   });
+  tickCurrencies(document);
 
-  /* ---------- About: rotating photo fan ---------- */
-  const fan = document.querySelector('[data-fan]');
-  if (fan) {
-    const cards = [...fan.querySelectorAll('.fan__card')];
-    let order = cards.map((c) => +c.dataset.pos);
-    const apply = () => cards.forEach((c, i) => { c.dataset.pos = order[i]; });
-    const step = (dir = 1) => {
-      order = order.map((p) => { let n = p - dir; if (n < -2) n = 2; if (n > 2) n = -2; return n; });
-      apply();
+  /* ---------- Case studies: open over the page, always from the top ---------- */
+  const overlay = document.getElementById('case');
+  const caseBody = overlay.querySelector('[data-case-body]');
+  const caseScroll = overlay.querySelector('[data-case-scroll]');
+  const caseTitle = overlay.querySelector('[data-case-title]');
+  let revealIO = null;
+  let lastTrigger = null;
+  let openId = null;
+
+  const fill = (id) => {
+    const tpl = document.getElementById(`case-${id}`);
+    if (!tpl) return false;
+    caseBody.replaceChildren(tpl.content.cloneNode(true));
+    caseTitle.textContent = tpl.dataset.title || 'Case study';
+    caseScroll.scrollTop = 0;
+    tickCurrencies(caseBody);
+    if (revealIO) revealIO.disconnect();
+    const items = caseBody.querySelectorAll('[data-reveal]');
+    if (!('IntersectionObserver' in window) || reduced) {
+      items.forEach((el) => el.classList.add('is-in'));
+    } else {
+      revealIO = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); revealIO.unobserve(e.target); } });
+      }, { root: caseScroll, rootMargin: '0px 0px -8% 0px' });
+      items.forEach((el) => revealIO.observe(el));
+    }
+    openId = id;
+    try { history.replaceState(null, '', `#${id}`); } catch (e) { /* sandboxed */ }
+    return true;
+  };
+
+  const openCase = (id, from) => {
+    if (openId) { // already open: swap to the next project
+      if (motion) {
+        gsap.to(caseBody, { opacity: 0, y: 20, duration: 0.25, ease: 'power2.in', onComplete: () => {
+          fill(id);
+          gsap.fromTo(caseBody, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' });
+        } });
+      } else fill(id);
+      return;
+    }
+    if (!fill(id)) return;
+    lastTrigger = from || null;
+    overlay.hidden = false;
+    root.classList.add('case-open');
+    if (lenis) lenis.stop();
+    if (motion) {
+      const r = from ? from.getBoundingClientRect() : null;
+      const start = r
+        ? `inset(${Math.max(0, r.top)}px ${Math.max(0, innerWidth - r.right)}px ${Math.max(0, innerHeight - r.bottom)}px ${Math.max(0, r.left)}px round 30px)`
+        : 'inset(100% 0% 0% 0% round 30px)';
+      gsap.fromTo(overlay, { clipPath: start }, { clipPath: 'inset(0px 0px 0px 0px round 0px)', duration: 0.85, ease: 'expo.inOut', clearProps: 'clipPath' });
+    }
+    overlay.querySelector('.case__x').focus({ preventScroll: true });
+  };
+
+  const closeCase = () => {
+    if (!openId) return;
+    const done = () => {
+      overlay.hidden = true;
+      root.classList.remove('case-open');
+      caseBody.replaceChildren();
+      if (lenis) lenis.start();
+      if (lastTrigger) lastTrigger.focus({ preventScroll: true });
     };
-    let timer = null;
-    const play = () => { if (!reduced && !timer) timer = setInterval(() => step(1), 2600); };
-    const pause = () => { clearInterval(timer); timer = null; };
-    cards.forEach((c, i) => c.addEventListener('click', () => {
-      const p = order[i];
-      if (p === 0) return;
-      const dir = Math.sign(p);
-      for (let k = 0; k < Math.abs(p); k++) step(dir);
-    }));
-    fan.addEventListener('pointerenter', pause);
-    fan.addEventListener('pointerleave', play);
-    play();
-  }
+    openId = null;
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* sandboxed */ }
+    if (motion) gsap.to(overlay, { clipPath: 'inset(100% 0% 0% 0% round 30px)', duration: 0.6, ease: 'expo.in', onComplete: () => { gsap.set(overlay, { clearProps: 'clipPath' }); done(); } });
+    else done();
+  };
+
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-case]');
+    if (trigger) { e.preventDefault(); openCase(trigger.dataset.case, trigger); return; }
+    const next = e.target.closest('[data-case-open]');
+    if (next) { e.preventDefault(); openCase(next.dataset.caseOpen); return; }
+    if (e.target.closest('[data-case-close]')) closeCase();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCase(); });
+  const fromHash = location.hash.replace('#', '');
+  if (fromHash && document.getElementById(`case-${fromHash}`)) openCase(fromHash);
 
   /* ---------- Fallback: no GSAP or reduced motion ---------- */
-  if (!hasGsap || reduced) {
-    document.querySelectorAll('[data-count]').forEach((el) => { el.textContent = el.dataset.count; });
+  if (!motion) {
+    document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
+      if (a.closest('[data-case]')) return;
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView(); }
+    }));
     return;
   }
 
-  gsap.registerPlugin(ScrollTrigger, SplitText);
+  gsap.registerPlugin(ScrollTrigger);
   gsap.defaults({ ease: 'power3.out' });
 
   /* ---------- Smooth scroll ---------- */
-  const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+  lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((t) => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
+  if (openId) lenis.stop();
 
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    if (a.hasAttribute('data-case')) return;
     a.addEventListener('click', (e) => {
       const id = a.getAttribute('href');
       const target = document.querySelector(id);
@@ -92,31 +156,6 @@
       lenis.scrollTo(target, { offset: id === '#home' ? 0 : -20, duration: 1.4 });
     });
   });
-
-  /* ---------- Page transitions (soft fade) ---------- */
-  const isInternalPage = (a) => {
-    if (a.target === '_blank' || a.hasAttribute('download')) return false;
-    const href = a.getAttribute('href') || '';
-    if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return false;
-    try {
-      const url = new URL(a.href, location.href);
-      return url.origin === location.origin && url.pathname !== location.pathname && !/\.(pdf|jpg|png|webp|svg)$/i.test(url.pathname);
-    } catch (e) { return false; }
-  };
-  document.querySelectorAll('a[href]').forEach((a) => {
-    if (!isInternalPage(a)) return;
-    a.addEventListener('click', (e) => {
-      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-      e.preventDefault();
-      store.set('dg-fade', '1');
-      gsap.to(curtain, { opacity: 1, duration: 0.45, ease: 'power2.inOut', onComplete: () => { location.href = a.href; } });
-    });
-  });
-  if (store.get('dg-fade') === '1') {
-    store.set('dg-fade', '0');
-    gsap.fromTo(curtain, { opacity: 1 }, { opacity: 0, duration: 0.6, ease: 'power2.out', delay: 0.05 });
-  }
-  window.addEventListener('pageshow', (e) => { if (e.persisted) gsap.set(curtain, { opacity: 0 }); });
 
   /* ---------- Cursor ---------- */
   if (finePointer) {
@@ -129,7 +168,7 @@
     window.addEventListener('pointermove', (e) => { xTo(e.clientX); yTo(e.clientY); }, { passive: true });
     document.addEventListener('pointerover', (e) => {
       const open = e.target.closest('[data-open]');
-      const link = e.target.closest('a, button, .fan__card');
+      const link = e.target.closest('a, button');
       cur.classList.toggle('is-open', !!open);
       cur.classList.toggle('is-hover', !open && !!link);
       if (open) label.textContent = open.dataset.open || 'Click to Open';
@@ -141,52 +180,38 @@
   }
 
   /* ---------- Hero entrance ---------- */
-  const heroWords = document.querySelectorAll('.hero__word');
-  if (heroWords.length) {
-    const objs = document.querySelectorAll('.shelf .obj');
-    const tl = gsap.timeline({ delay: 0.15 });
-    tl.from(heroWords, { yPercent: 60, opacity: 0, duration: 0.9, stagger: 0.09 })
-      .from('[data-hero-sub]', { y: 18, opacity: 0, duration: 0.8 }, 0.3)
-      .from('.side, .socials', { opacity: 0, duration: 0.8 }, 0.3)
-      .from('[data-shelf]', { y: 40, scale: 0.96, opacity: 0, duration: 1.1 }, 0.4)
-      .from(objs, { y: 26, scale: 0.85, opacity: 0, duration: 0.8, stagger: 0.07, ease: 'back.out(1.7)', clearProps: 'transform' }, 0.85)
-      .from('[data-desk]', { y: 140, opacity: 0, duration: 1.2, ease: 'power4.out' }, 1);
-  }
+  gsap.timeline({ delay: 0.15 })
+    .from('.hero__word', { yPercent: 60, opacity: 0, duration: 0.9, stagger: 0.09 })
+    .from('[data-hero-sub]', { y: 18, opacity: 0, duration: 0.8 }, 0.3)
+    .from('.side, .socials', { opacity: 0, duration: 0.8 }, 0.3)
+    .from('[data-scene] .scene__img', { y: 50, scale: 0.97, opacity: 0, duration: 1.3, ease: 'power4.out' }, 0.4)
+    .from('[data-scene] .hot__dot', { scale: 0, duration: 0.6, stagger: 0.08, ease: 'back.out(2.5)' }, 1.2);
 
-  /* ---------- Case-study title ---------- */
-  const csTitle = document.querySelector('[data-hero-title]');
-  if (csTitle) {
-    const split = SplitText.create(csTitle, { type: 'chars', mask: 'chars' });
-    gsap.from(split.chars, { yPercent: 110, duration: 1, stagger: 0.03, ease: 'power4.out', delay: 0.15 });
-    gsap.from('[data-fade]', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08, delay: 0.3 });
-  }
-
-  /* ---------- Scroll-built animations (after fonts, for correct line splits) ---------- */
+  /* ---------- Scroll-built animations ---------- */
   const build = () => {
     const mm = gsap.matchMedia();
 
-    // laptop opens, then the projects fly out of the screen
+    // laptop opens, the projects rise out of the screen and stay centred
     const intro = document.querySelector('[data-intro]');
     if (intro) {
       const lid = intro.querySelector('[data-lid]');
       const laptop = intro.querySelector('[data-laptop]');
       const tiles = gsap.utils.toArray(intro.querySelectorAll('[data-fly]'));
-      const spread = () => (tiles[0] ? tiles[0].offsetWidth * 0.62 : 120);
-      const lift = () => -Math.min(innerHeight * 0.36, 360);
+      const spread = () => (tiles[0] ? tiles[0].offsetWidth * 0.26 : 60);
       gsap.set('[data-intro-title], [data-intro-sub]', { opacity: 0.25, y: 30 });
-      const tl = gsap.timeline({
-        scrollTrigger: { trigger: intro, start: 'top top', end: '+=220%', pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true },
-      });
-      tl.to('[data-intro-title]', { opacity: 1, y: 0, duration: 0.2, ease: 'none' }, 0)
-        .to('[data-intro-sub]', { opacity: 1, y: 0, duration: 0.2, ease: 'none' }, 0.04)
-        .to(lid, { rotateX: 0, duration: 0.35, ease: 'power2.inOut' }, 0.2)
-        .to('.intro__text', { opacity: 0, y: -80, duration: 0.15, ease: 'none' }, 0.58)
+      gsap.timeline({
+        scrollTrigger: { trigger: intro, start: 'top top', end: '+=260%', pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true },
+      })
+        .to('[data-intro-title]', { opacity: 1, y: 0, duration: 0.16, ease: 'none' }, 0)
+        .to('[data-intro-sub]', { opacity: 1, y: 0, duration: 0.16, ease: 'none' }, 0.03)
+        .to(lid, { rotateX: 0, duration: 0.28, ease: 'power2.inOut' }, 0.16)
+        .to('.intro__text', { opacity: 0, y: -80, duration: 0.12, ease: 'none' }, 0.46)
+        .to(laptop, { y: () => innerHeight * 0.1, scale: 0.92, duration: 0.3, ease: 'none' }, 0.48)
         .to(tiles, {
-          y: lift, x: (i) => (i - 1) * spread(), rotate: (i) => (i - 1) * 7, scale: 1.75,
-          boxShadow: '0 40px 60px -20px rgba(0,0,0,0.45)',
-          duration: 0.4, stagger: 0.05, ease: 'power3.out',
-        }, 0.6)
-        .to(laptop, { y: 60, scale: 0.94, duration: 0.4, ease: 'none' }, 0.62);
+          y: () => -innerHeight * 0.2, x: (i) => (i ? 1 : -1) * spread(), rotate: (i) => (i ? 5 : -5), scale: 1.5,
+          boxShadow: '0 40px 70px -24px rgba(0,0,0,0.5)', duration: 0.3, stagger: 0.04, ease: 'power3.out',
+        }, 0.5)
+        .to({}, { duration: 0.3 }); // hold: the cards stay in the middle before the page moves on
     }
 
     // stacking project cards
@@ -195,58 +220,20 @@
       sleeves.forEach((s, i) => {
         const next = sleeves[i + 1];
         if (!next) return;
-        gsap.to(s, {
-          scale: 0.92, ease: 'none',
-          scrollTrigger: { trigger: next, start: 'top bottom', end: 'top 15%', scrub: true },
-        });
+        gsap.to(s, { scale: 0.92, ease: 'none', scrollTrigger: { trigger: next, start: 'top bottom', end: 'top 15%', scrub: true } });
       });
     });
 
-    // split headings (case studies)
-    document.querySelectorAll('[data-split]').forEach((el) => {
-      SplitText.create(el, {
-        type: 'lines,words', mask: 'lines', autoSplit: true,
-        onSplit: (self) => gsap.from(self.words, {
-          yPercent: 110, duration: 1, stagger: 0.03, ease: 'power4.out',
-          scrollTrigger: { trigger: el, start: 'top 88%', once: true },
-        }),
-      });
-    });
-
-    // fade-up reveals
-    gsap.set('[data-reveal]', { y: 40, opacity: 0 });
-    ScrollTrigger.batch('[data-reveal]', {
+    // fade-up reveals on the page (the case overlay handles its own)
+    const pageReveals = gsap.utils.toArray('main [data-reveal]');
+    gsap.set(pageReveals, { y: 40, opacity: 0 });
+    ScrollTrigger.batch(pageReveals, {
       start: 'top 92%', once: true,
       onEnter: (els) => gsap.to(els, { y: 0, opacity: 1, duration: 1, stagger: 0.08 }),
     });
 
-    // fan spreads open when it enters
-    if (fan) {
-      fan.classList.add('is-collapsed');
-      ScrollTrigger.create({ trigger: fan, start: 'top 80%', once: true, onEnter: () => fan.classList.remove('is-collapsed') });
-    }
-
-    // counters
-    document.querySelectorAll('[data-count]').forEach((el) => {
-      const end = +el.dataset.count; const o = { v: 0 };
-      el.textContent = '0';
-      ScrollTrigger.create({
-        trigger: el, start: 'top 92%', once: true,
-        onEnter: () => gsap.to(o, { v: end, duration: 1.6, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(o.v); } }),
-      });
-    });
-
-    // parallax
-    document.querySelectorAll('[data-parallax]').forEach((el) => {
-      const amt = parseFloat(el.dataset.parallax) || 8;
-      gsap.fromTo(el, { yPercent: amt }, {
-        yPercent: -amt, ease: 'none',
-        scrollTrigger: { trigger: el.closest('section, .cs-cover, .shot') || el, start: 'top bottom', end: 'bottom top', scrub: true },
-      });
-    });
-
     // mood bars grow in
-    document.querySelectorAll('.ss__bars').forEach((bars) => {
+    document.querySelectorAll('main .ss__bars').forEach((bars) => {
       gsap.from(bars.children, { scaleY: 0, duration: 1, stagger: 0.06, scrollTrigger: { trigger: bars, start: 'top 95%' } });
     });
 

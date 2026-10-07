@@ -15,18 +15,14 @@ Deploy by pointing Vercel / Netlify / GitHub Pages at the repo root. There is no
 
 | Path | What |
 | --- | --- |
-| `index.html` | Home: clay shelf hero → laptop that opens and launches the project cards → stacked project cards → about (photo fan, journey) → contact |
-| `work/*.html` | Case studies: SafeSpace, Retail Vision, Photography |
+| `index.html` | Home: desk-scene hero (every object is a link) → laptop that opens and launches the projects → SafeSpace & Retail Vision cards → About → Life → contact. Both case studies live in `<template>` tags at the bottom and open full-screen over the page (deep links: `#safespace`, `#retail-vision`). |
 | `assets/css/style.css` | All styles (tokens at the top) |
-| `assets/js/main.js` | Sidebar pill, pink cursor + "Click to Open", hero pop-in, laptop fly-out, card stacking, photo fan, reveals |
+| `assets/js/main.js` | Sidebar pill, pink cursor + labels, hero entrance, laptop fly-out, card stacking, case-study overlay, reveals |
+| `assets/img/hero-desk.webp` | Hero scene. Hotspot positions are percentages of this image — re-check them if you swap it. |
+| `assets/me/dev.webp` | About Me photo |
 | `assets/work/` | Retail Vision screens exported from the Figma file |
-| `assets/img/desk.svg` | Desk illustration under the shelf |
 
-## Add your photos
+## Add your photography
 
-Put a photo of yourself at `assets/me/dev.jpg` (portrait crop). It goes in the centre of the About Me photo fan; until then a DG monogram shows there.
-
-
-Drop your photos into `assets/photos/` named `01.jpg` … `09.jpg` (portrait crops look best for 01–05).
-They show up automatically in the About photo fan, the "Life Behind the Lens" strip and the Photography card.
-Until then, those frames show tinted placeholders.
+Drop your photos into `assets/photos/` as `01.jpg` … `05.jpg` (portrait crops look best).
+They appear as the polaroids in the Life section; until then the polaroids show warm tinted placeholders.

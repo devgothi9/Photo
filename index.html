@@ -11,6 +11,7 @@
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/hero-desk.webp" as="image">
   <link rel="stylesheet" href="assets/css/style.css">
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
@@ -21,7 +22,7 @@
 <!-- custom cursor -->
 <div class="cursor" aria-hidden="true">
   <svg class="cursor__arrow" viewBox="0 0 30 30"><defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3d8b"/><stop offset="1" stop-color="#b0105f"/></linearGradient></defs><path d="M2 2 L27 13 L15.5 15.5 L13 27 Z" fill="url(#cg)" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>
-  <svg class="cursor__hand" viewBox="0 0 32 32"><path d="M11 3.5c1.3 0 2.3 1 2.3 2.3v8.1l.9-.1c.3-1.2 1.3-2 2.5-2 1.1 0 2 .7 2.4 1.7.4-.4 1-.6 1.6-.6 1.2 0 2.2.9 2.4 2.1.4-.2.8-.3 1.2-.3 1.4 0 2.5 1.1 2.5 2.5v5.6c0 4.4-3.6 8-8 8h-2.2c-2.6 0-5-1.3-6.5-3.4l-4.6-6.6c-.7-1-.5-2.4.5-3.100 1-.7 2.3-.6 3.1.3l1.2 1.3V5.8c0-1.3 1-2.3 2.2-2.3Z" fill="#e8336f" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg>
+  <svg class="cursor__hand" viewBox="0 0 32 32"><path d="M11 3.5c1.3 0 2.3 1 2.3 2.3v8.1l.9-.1c.3-1.2 1.3-2 2.5-2 1.1 0 2 .7 2.4 1.7.4-.4 1-.6 1.6-.6 1.2 0 2.2.9 2.4 2.1.4-.2.8-.3 1.2-.3 1.4 0 2.5 1.1 2.5 2.5v5.6c0 4.4-3.6 8-8 8h-2.2c-2.6 0-5-1.3-6.5-3.4l-4.6-6.6c-.7-1-.5-2.4.5-3.1 1-.7 2.3-.6 3.1.3l1.2 1.3V5.8c0-1.3 1-2.3 2.2-2.3Z" fill="#e8336f" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg>
   <span class="cursor__label">Click to Open</span>
 </div>
 
@@ -36,15 +37,19 @@
     <span class="side__label">Projects</span>
   </a>
   <a href="#about" class="side__item" data-nav="about" aria-label="About">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm-3.3 6.6a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm6.6 0a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm-7.4 5.2a.9.9 0 0 0-.7 1.4A5.700 5.700 0 0 0 12 17.6a5.7 5.7 0 0 0 4.8-2.4.9.9 0 0 0-.7-1.4H7.9Z"/></svg>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm-3.3 6.6a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm6.6 0a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm-7.4 5.2a.9.9 0 0 0-.7 1.4A5.7 5.7 0 0 0 12 17.6a5.7 5.7 0 0 0 4.8-2.4.9.9 0 0 0-.7-1.4H7.9Z"/></svg>
     <span class="side__label">About</span>
+  </a>
+  <a href="#life" class="side__item" data-nav="life" aria-label="Life">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.2 3h5.6c.6 0 1.1.3 1.4.8L17.3 6H19a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1.7l1.1-2.2c.3-.5.8-.8 1.4-.8ZM12 9a4.2 4.2 0 1 0 0 8.4A4.2 4.2 0 0 0 12 9Zm0 2a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4Z"/></svg>
+    <span class="side__label">Life</span>
   </a>
 </nav>
 
 <!-- socials -->
 <div class="socials">
   <a href="https://github.com/devgothi9" target="_blank" rel="noopener" aria-label="GitHub">
-    <svg viewBox="0 0 36 36"><rect x="2" y="2" width="32" height="32" rx="5" fill="currentColor"/><path fill="#fff" d="M18 7.5a10.5 10.5 0 0 0-3.3 20.5c.5.1.7-.2.7-.5v-1.9c-2.9.6-3.5-1.2-3.5-1.2-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.6.1-.6 1 .1 1.6 1.1 1.6 1.1.9 1.6 2.5 1.1 3.1.9.1-.7.4-1.1.7-1.4-2.3-.3-4.8-1.2-4.8-5.2 0-1.1.4-2.1 1.1-2.8-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 2.9 1.1a10 10 0 0 1 5.2 0c2-1.4 2.9-1.1 2.9-1.1.6 1.5.2 2.600.1 2.9.7.7 1.1 1.7 1.1 2.8 0 4-2.5 4.9-4.8 5.2.4.3.7 1 .7 1.9v2.9c0 .3.2.6.7.5A10.5 10.5 0 0 0 18 7.5Z"/></svg>
+    <svg viewBox="0 0 36 36"><rect x="2" y="2" width="32" height="32" rx="5" fill="currentColor"/><path fill="#fff" d="M18 7.5a10.5 10.5 0 0 0-3.3 20.5c.5.1.7-.2.7-.5v-1.9c-2.9.6-3.5-1.2-3.5-1.2-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.6.1-.6 1 .1 1.6 1.1 1.6 1.1.9 1.6 2.5 1.1 3.1.9.1-.7.4-1.1.7-1.4-2.3-.3-4.8-1.2-4.8-5.2 0-1.1.4-2.1 1.1-2.8-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 2.9 1.1a10 10 0 0 1 5.2 0c2-1.4 2.9-1.1 2.9-1.1.6 1.5.2 2.6.1 2.9.7.7 1.1 1.7 1.1 2.8 0 4-2.5 4.9-4.8 5.2.4.3.7 1 .7 1.9v2.9c0 .3.2.6.7.5A10.5 10.5 0 0 0 18 7.5Z"/></svg>
   </a>
   <a href="mailto:devgothi9@gmail.com" aria-label="Email">
     <svg viewBox="0 0 36 36"><rect x="2" y="6" width="32" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="3.2"/><path d="M4 9.5 18 21 32 9.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/><path d="M3.5 28.5 13.5 17M32.5 28.5 22.5 17" stroke="currentColor" stroke-width="3.2"/></svg>
@@ -58,164 +63,23 @@
     <h1 class="hero__title" data-hero><span class="hero__word">Hi,</span> <span class="hero__word">I'm</span> <span class="hero__word pink">Dev</span></h1>
     <p class="hero__sub" data-hero-sub>Full-stack engineer building secure, scalable B2C products</p>
 
-    <div class="shelf" data-shelf>
-      <!-- 1 · coursework books -->
-      <div class="cubby">
-        <a class="obj books" href="#about" aria-label="Coursework at Algonquin College">
-          <span class="obj__tip">Algonquin College · CET '27</span>
-          <span class="book" style="--c:#2d3a8c;--o:4%"><i></i>DATA STRUCTURES<b>CET</b></span>
-          <span class="book" style="--c:#c4472d;--o:0%"><i></i>CALCULUS<b>II</b></span>
-          <span class="book" style="--c:#1f7a5a;--o:7%"><i></i>DATABASE SYSTEMS<b>SQL</b></span>
-          <span class="book" style="--c:#e3b23c;--o:2%"><i></i>DISCRETE STRUCTURES<b>∑</b></span>
-          <span class="book" style="--c:#5b3c88;--o:5%"><i></i>SOFTWARE ENGINEERING<b>SE</b></span>
-          <span class="book" style="--c:#1e1e1e;--o:1%"><i></i>LINUX · RHEL · CENTOS<b>$_</b></span>
-          <span class="book" style="--c:#2f6fa8;--o:6%"><i></i>NETWORKS · SNMP · YANG<b>NET</b></span>
-          <span class="book" style="--c:#a23b5e;--o:3%"><i></i>JAVA · PYTHON · C++<b>{ }</b></span>
-        </a>
-      </div>
-      <!-- 2 · plant -->
-      <div class="cubby">
-        <span class="obj" style="left:34%;width:32%" aria-hidden="true">
-          <span class="obj__tip">Grows a little every day</span>
-          <svg viewBox="0 0 200 230">
-            <defs>
-              <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5fae55"/><stop offset="1" stop-color="#2f6e35"/></linearGradient>
-              <linearGradient id="pot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b9643f"/><stop offset=".45" stop-color="#d98a5f"/><stop offset="1" stop-color="#a5532f"/></linearGradient>
-            </defs>
-            <g stroke="#3d6b33" stroke-width="3" fill="none" stroke-linecap="round"><path d="M100 160 C98 120 70 90 46 70"/><path d="M100 160 C104 110 120 70 152 46"/><path d="M100 160 C100 120 96 80 96 30"/><path d="M100 160 C112 130 140 112 172 106"/><path d="M100 160 C88 136 56 124 26 122"/></g>
-            <g fill="url(#leaf)">
-              <path d="M46 70 C20 66 8 40 18 22 C40 22 60 44 46 70Z"/>
-              <path d="M152 46 C150 18 174 4 194 12 C192 36 176 52 152 46Z"/>
-              <path d="M96 30 C78 16 82 -4 98 -10 C114 -2 116 18 96 30Z"/>
-              <path d="M172 106 C186 86 206 88 214 100 C204 118 186 120 172 106Z"/>
-              <path d="M26 122 C8 108 -6 116 -10 130 C4 142 20 138 26 122Z"/>
-              <path d="M70 92 C52 86 46 66 56 54 C72 56 80 76 70 92Z"/>
-              <path d="M128 78 C126 58 142 46 156 50 C156 68 144 80 128 78Z"/>
-            </g>
-            <g stroke="#245a2b" stroke-width="1.2" opacity=".5" fill="none"><path d="M46 70 C36 52 26 36 18 22"/><path d="M152 46 C166 32 180 20 194 12"/><path d="M96 30 C96 14 98 0 98 -10"/></g>
-            <path d="M58 160 h84 l-10 66 a6 6 0 0 1 -6 4 h-52 a6 6 0 0 1 -6 -4z" fill="url(#pot)"/>
-            <rect x="52" y="150" width="96" height="18" rx="4" fill="#c97350"/>
-            <rect x="52" y="150" width="96" height="5" rx="2" fill="#e09a74" opacity=".7"/>
-          </svg>
-        </span>
-      </div>
-      <!-- 3 · SafeSpace phone + Retail Vision cart -->
-      <div class="cubby">
-        <a class="obj" href="work/safespace.html" style="left:20%;width:26%" aria-label="SafeSpace case study">
-          <span class="obj__tip">SafeSpace — live</span>
-          <svg viewBox="0 0 120 220">
-            <defs><linearGradient id="ssg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2e2650"/><stop offset="1" stop-color="#15121f"/></linearGradient></defs>
-            <path d="M14 206 h92 l8 14 h-108z" fill="#555"/>
-            <rect x="18" y="8" width="84" height="196" rx="16" fill="#111" transform="rotate(-4 60 106)"/>
-            <g transform="rotate(-4 60 106)">
-              <rect x="23" y="13" width="74" height="186" rx="12" fill="url(#ssg)"/>
-              <rect x="48" y="18" width="24" height="6" rx="3" fill="#000"/>
-              <text x="31" y="44" font-family="Manrope, sans-serif" font-weight="800" font-size="11" fill="#fff">SafeSpace</text>
-              <rect x="30" y="54" width="60" height="26" rx="7" fill="#fff" opacity=".1"/>
-              <rect x="40" y="86" width="50" height="22" rx="7" fill="#a99bff"/>
-              <rect x="30" y="114" width="60" height="44" rx="7" fill="#fff" opacity=".08"/>
-              <g fill="#a99bff"><rect x="35" y="140" width="6" height="12" rx="2" opacity=".5"/><rect x="44" y="134" width="6" height="18" rx="2" opacity=".5"/><rect x="53" y="138" width="6" height="14" rx="2" opacity=".5"/><rect x="62" y="128" width="6" height="24" rx="2"/><rect x="71" y="132" width="6" height="20" rx="2" opacity=".5"/><rect x="80" y="124" width="6" height="28" rx="2"/></g>
-              <rect x="30" y="166" width="60" height="18" rx="9" fill="#d4c9ff"/>
-            </g>
-          </svg>
-        </a>
-        <a class="obj" href="work/retail-vision.html" style="left:52%;width:34%" aria-label="Retail Vision case study">
-          <span class="obj__tip">Retail Vision — in progress</span>
-          <svg viewBox="0 0 180 150">
-            <g fill="none" stroke="#1d5a40" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8 18 h22 l18 82 h96 l18 -62 H40"/>
-              <path d="M44 60 h116"/><path d="M50 82 h98"/>
-              <path d="M70 38 v62M100 38 v62M130 38 v62"/>
-            </g>
-            <rect x="60" y="20" width="34" height="40" rx="4" fill="#f2efe6" stroke="#cfcabd"/><rect x="64" y="34" width="26" height="10" fill="#1d5a40"/>
-            <rect x="98" y="14" width="22" height="44" rx="4" fill="#e9a23b"/>
-            <circle cx="122" cy="34" r="16" fill="#f4d03f"/>
-            <circle cx="60" cy="126" r="11" fill="#2b2b2b"/><circle cx="60" cy="126" r="4" fill="#888"/>
-            <circle cx="134" cy="126" r="11" fill="#2b2b2b"/><circle cx="134" cy="126" r="4" fill="#888"/>
-            <path d="M48 104 l6 12h86" fill="none" stroke="#1d5a40" stroke-width="6" stroke-linecap="round"/>
-          </svg>
-        </a>
-      </div>
-      <!-- 4 · camera + prints (photography) -->
-      <div class="cubby">
-        <a class="obj" href="#about" style="left:9%;width:84%" aria-label="Photography">
-          <span class="obj__tip">Photography — life behind the lens</span>
-          <svg viewBox="0 0 320 190">
-            <defs>
-              <linearGradient id="cam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a4c"/><stop offset="1" stop-color="#1c1c1e"/></linearGradient>
-              <radialGradient id="glass" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#6c8fb5"/><stop offset=".5" stop-color="#1d2a3c"/><stop offset="1" stop-color="#05070b"/></radialGradient>
-              <linearGradient id="p1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4c26b"/><stop offset=".5" stop-color="#d0674f"/><stop offset="1" stop-color="#3b2a4a"/></linearGradient>
-              <linearGradient id="p2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ec5e8"/><stop offset=".6" stop-color="#4f8f5a"/><stop offset="1" stop-color="#2e5a34"/></linearGradient>
-              <linearGradient id="p3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2a3a"/><stop offset="1" stop-color="#c76d8a"/></linearGradient>
-            </defs>
-            <g transform="rotate(-3 110 70)"><rect x="56" y="10" width="124" height="96" rx="2" fill="#f7f3ea"/><rect x="64" y="18" width="108" height="80" fill="url(#p2)"/><path d="M64 98 L98 62 L124 84 L146 66 L172 98Z" fill="#2c4f2f" opacity=".7"/></g>
-            <g transform="rotate(-12 50 170)"><rect x="4" y="150" width="86" height="58" fill="#fbf8f2"/><rect x="9" y="155" width="76" height="46" fill="url(#p1)"/></g>
-            <g transform="rotate(9 270 170)"><rect x="228" y="150" width="86" height="58" fill="#fbf8f2"/><rect x="233" y="155" width="76" height="46" fill="url(#p3)"/></g>
-            <path d="M92 106 C60 120 54 160 96 176" fill="none" stroke="#6b5a4a" stroke-width="7" stroke-linecap="round"/>
-            <path d="M232 106 C268 116 280 150 250 176" fill="none" stroke="#6b5a4a" stroke-width="7" stroke-linecap="round"/>
-            <rect x="90" y="86" width="150" height="88" rx="14" fill="url(#cam)"/>
-            <path d="M118 86 l10 -18 h50 l10 18Z" fill="#2a2a2c"/>
-            <rect x="200" y="74" width="22" height="12" rx="3" fill="#333"/>
-            <rect x="96" y="96" width="30" height="72" rx="10" fill="#222"/>
-            <rect x="90" y="120" width="150" height="4" fill="#000" opacity=".25"/>
-            <circle cx="172" cy="134" r="40" fill="#141416"/>
-            <circle cx="172" cy="134" r="34" fill="#2a2a2c" stroke="#3a3a3c" stroke-width="2"/>
-            <circle cx="172" cy="134" r="24" fill="url(#glass)"/>
-            <circle cx="164" cy="125" r="6" fill="#fff" opacity=".35"/>
-            <circle cx="180" cy="142" r="3" fill="#fff" opacity=".15"/>
-            <circle cx="222" cy="100" r="5" fill="#c94b6d"/>
-          </svg>
-        </a>
-      </div>
-      <!-- 5 · trophy + mug -->
-      <div class="cubby">
-        <a class="obj" href="#about" style="left:20%;width:30%" aria-label="Tech-Xtreme">
-          <span class="obj__tip">Tech-Xtreme · Co-Head Coordinator</span>
-          <svg viewBox="0 0 140 190">
-            <defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b8862b"/><stop offset=".4" stop-color="#f3d27a"/><stop offset=".7" stop-color="#d9a640"/><stop offset="1" stop-color="#9c6d1f"/></linearGradient></defs>
-            <path d="M30 14 C10 14 6 50 40 64" fill="none" stroke="url(#gold)" stroke-width="8"/>
-            <path d="M110 14 C130 14 134 50 100 64" fill="none" stroke="url(#gold)" stroke-width="8"/>
-            <path d="M28 6 h84 v30 c0 28 -18 46 -42 46 s-42 -18 -42 -46z" fill="url(#gold)"/>
-            <rect x="62" y="80" width="16" height="34" fill="url(#gold)"/>
-            <path d="M44 114 h52 l6 16 h-64z" fill="url(#gold)"/>
-            <rect x="26" y="130" width="88" height="54" rx="4" fill="#2a2a2c"/>
-            <rect x="38" y="146" width="64" height="22" rx="2" fill="#d9a640"/>
-            <text x="70" y="161" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="9" fill="#2a2a2c">TECH-XTREME</text>
-            <path d="M58 22 l12 -6 v40" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="4" stroke-linecap="round"/>
-          </svg>
-        </a>
-        <span class="obj" style="left:56%;width:28%" aria-hidden="true">
-          <span class="obj__tip">Fuel for late-night deploys</span>
-          <svg viewBox="0 0 130 150">
-            <defs><linearGradient id="mug" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#dcdcdc"/><stop offset=".45" stop-color="#ffffff"/><stop offset="1" stop-color="#c9c9c9"/></linearGradient></defs>
-            <path d="M92 50 a26 26 0 0 1 0 52" fill="none" stroke="#d6d6d6" stroke-width="12"/>
-            <path d="M10 30 h86 v96 a18 18 0 0 1 -18 18 h-50 a18 18 0 0 1 -18 -18z" fill="url(#mug)"/>
-            <ellipse cx="53" cy="30" rx="43" ry="9" fill="#e7e7e7"/><ellipse cx="53" cy="31" rx="37" ry="6" fill="#5a3a24"/>
-            <text x="53" y="92" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="22" fill="#c94b6d">&lt;/&gt;</text>
-            <path d="M38 18 c-6 -8 6 -10 0 -18M58 16 c-6 -8 6 -10 0 -18" fill="none" stroke="#bbb" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
-          </svg>
-        </span>
-      </div>
-      <!-- 6 · stack boxes -->
-      <div class="cubby">
-        <a class="obj spines" href="#about" aria-label="Tech stack">
-          <span class="obj__tip">My stack</span>
-          <span class="spine" style="--c:#111;--h:96%"><span>NEXT.JS 14</span></span>
-          <span class="spine" style="--c:#3ecf8e;--h:84%;--t:#0b2a1c"><span>SUPABASE</span></span>
-          <span class="spine" style="--c:#635bff;--h:92%"><span>STRIPE</span></span>
-          <span class="spine" style="--c:#f2c94c;--h:78%;--t:#2b2b2b"><span>PYTHON</span></span>
-          <span class="spine" style="--c:#00add8;--h:70%"><span>GOLANG</span></span>
-          <span class="spine" style="--c:#2496ed;--h:88%"><span>DOCKER</span></span>
-          <span class="spine" style="--c:#326ce5;--h:74%"><span>KUBERNETES</span></span>
-          <span class="spine" style="--c:#336791;--h:82%"><span>POSTGRESQL</span></span>
-          <span class="spine" style="--c:#c94b6d;--h:66%"><span>OPENAI · CLAUDE</span></span>
-          <span class="spine" style="--c:#ea4b71;--h:60%"><span>N8N</span></span>
-        </a>
-      </div>
-    </div>
-
-    <div class="desk" data-desk>
-      <img src="assets/img/desk.svg" alt="Illustration of Dev at his desk, working on a monitor" width="1160" height="420">
+    <div class="scene" data-scene>
+      <img class="scene__img" src="assets/img/hero-desk.webp" alt="Dev at his desk under a shelf of books, plants, a camera, games and board games" width="1254" height="1079">
+      <a class="hot hot--pill" href="#projects" style="--l:12.60%;--t:44.95%;--w:13.88%;--h:5.56%" data-open="My Works" aria-label="My Works"></a>
+      <a class="hot hot--pill" href="#about" style="--l:65.63%;--t:56.53%;--w:13.32%;--h:5.65%" data-open="About me" aria-label="About me"></a>
+      <a class="hot hot--big" href="#about" style="--l:44.66%;--t:35.68%;--w:30.70%;--h:64.32%" data-open="That's me" aria-label="That's me"><span class="hot__dot"></span></a>
+      <a class="hot" href="#projects" style="--l:10.37%;--t:52.18%;--w:20.89%;--h:17.61%" data-open="Projects" aria-label="Projects"><span class="hot__dot"></span></a>
+      <a class="hot" href="#projects" style="--l:33.89%;--t:41.43%;--w:10.77%;--h:22.24%" data-open="What I'm building" aria-label="What I'm building"></a>
+      <a class="hot" href="#life" style="--l:15.95%;--t:24.56%;--w:19.94%;--h:12.79%" data-open="Photography" aria-label="Photography"><span class="hot__dot"></span></a>
+      <a class="hot" href="#life" style="--l:89.47%;--t:60.89%;--w:5.58%;--h:7.04%" data-open="Photography" aria-label="Photography"></a>
+      <a class="hot" href="#about" style="--l:18.98%;--t:10.29%;--w:12.76%;--h:9.45%" data-open="Reading list" aria-label="Reading list"><span class="hot__dot"></span></a>
+      <a class="hot" href="#life" style="--l:32.06%;--t:11.58%;--w:5.42%;--h:8.34%" data-open="Off the clock" aria-label="Off the clock"></a>
+      <a class="hot" href="#life" style="--l:44.26%;--t:6.02%;--w:16.75%;--h:13.72%" data-open="Plants & patience" aria-label="Plants & patience"></a>
+      <a class="hot" href="#life" style="--l:67.15%;--t:9.92%;--w:19.38%;--h:10.01%" data-open="Games & movies" aria-label="Games & movies"><span class="hot__dot"></span></a>
+      <a class="hot" href="#life" style="--l:44.26%;--t:24.56%;--w:16.35%;--h:12.79%" data-open="Music" aria-label="Music"></a>
+      <a class="hot" href="#life" style="--l:67.38%;--t:22.89%;--w:19.14%;--h:14.46%" data-open="Board games" aria-label="Board games"><span class="hot__dot"></span></a>
+      <a class="hot" href="#life" style="--l:2.23%;--t:71.64%;--w:20.26%;--h:10.19%" data-open="Collectibles" aria-label="Collectibles"></a>
+      <a class="hot" href="#projects" style="--l:69.22%;--t:65.15%;--w:21.05%;--h:5.75%" data-open="Sketching ideas" aria-label="Sketching ideas"></a>
     </div>
   </section>
 
@@ -230,9 +94,8 @@
         <div class="laptop__screen">
           <div class="lscreen">
             <div class="lscreen__bar"><i></i><i></i><i></i><span>devgothi — projects</span></div>
-            <a class="lscreen__tile lscreen__tile--ss" href="work/safespace.html" data-fly data-open><b>SafeSpace</b><small>Anonymous wellness</small></a>
-            <a class="lscreen__tile lscreen__tile--rv" href="work/retail-vision.html" data-fly data-open><b>Retail Vision</b><small>Checkout without lines</small></a>
-            <a class="lscreen__tile lscreen__tile--ph" href="work/photography.html" data-fly data-open><b>Photography</b><small>Life behind the lens</small></a>
+            <a class="lscreen__tile lscreen__tile--ss" href="#safespace" data-case="safespace" data-fly data-open><b>SafeSpace</b><small>Anonymous wellness</small></a>
+            <a class="lscreen__tile lscreen__tile--rv" href="#retail-vision" data-case="retail-vision" data-fly data-open><b>Retail Vision</b><small>Checkout without lines</small></a>
           </div>
         </div>
       </div>
@@ -246,7 +109,7 @@
     <div class="projects">
 
       <div class="sleeve">
-        <a class="card" href="work/safespace.html" data-open>
+        <a class="card" href="#safespace" data-case="safespace" data-open>
           <div class="card__visual ss">
             <div class="ss__phone">
               <div class="ss__notch"></div>
@@ -265,11 +128,12 @@
             <div class="card__inside"><span>Founder</span><i></i><span>2025 – Present</span></div>
           </div>
           <div class="card__logo"><b style="background:#a99bff;color:#15121f">S</b>SafeSpace</div>
+          <span class="card__open">Click to Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
         </a>
       </div>
 
       <div class="sleeve">
-        <a class="card" href="work/retail-vision.html" data-open>
+        <a class="card" href="#retail-vision" data-case="retail-vision" data-open>
           <div class="card__visual rv-collage">
             <div class="rv-collage__l"><img src="assets/work/rv-scanner.webp" alt="" width="390" height="844" loading="lazy"></div>
             <div class="rv-collage__c">
@@ -290,28 +154,7 @@
             <div><small>Role</small><span>Design &amp; Engineering</span></div>
             <div><small>Skills :</small><span>Computer Vision, UX</span></div>
           </div>
-        </a>
-      </div>
-
-      <div class="sleeve">
-        <a class="card" href="work/photography.html" data-open>
-          <div class="card__visual ph-collage">
-            <div style="grid-template-rows:1.3fr 1fr">
-              <div class="frame" style="--fallback:linear-gradient(165deg,#5a4630,#120f0b)"><img src="assets/photos/01.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></div>
-              <div class="frame" style="--fallback:linear-gradient(200deg,#2d4152,#0b0f12)"><img src="assets/photos/02.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></div>
-            </div>
-            <div class="ph-collage__c"><div class="ph-mark"><span>dev.photography</span><em>Life behind the lens</em></div></div>
-            <div style="grid-template-rows:1fr 1.3fr">
-              <div class="frame" style="--fallback:linear-gradient(170deg,#5a3028,#100a09)"><img src="assets/photos/03.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></div>
-              <div class="frame" style="--fallback:linear-gradient(150deg,#344a2e,#0c0f0a)"><img src="assets/photos/04.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></div>
-            </div>
-          </div>
-          <div class="card__meta">
-            <div><small>Brand</small><span>Dev Photography</span></div>
-            <div><small>Year of Project</small><span>Live</span></div>
-            <div><small>Role</small><span>Photographer &amp; Dev</span></div>
-            <div><small>Skills :</small><span>Photography, Web</span></div>
-          </div>
+          <span class="card__open">Click to Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
         </a>
       </div>
 
@@ -321,15 +164,7 @@
   <!-- ================= ABOUT ================= -->
   <section class="section wrap" id="about" data-section="about">
     <h2 class="title" data-reveal>About Me</h2>
-
-    <div class="fan" data-fan aria-label="Photographs by Dev">
-      <figure class="fan__card" data-pos="-2" style="margin:0"><div class="frame" style="height:100%;--fallback:linear-gradient(165deg,#5a4630,#120f0b)"><img src="assets/photos/01.jpg" alt="Photograph by Dev" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></div></figure>
-      <figure class="fan__card" data-pos="-1" style="margin:0"><div class="frame" style="height:100%;--fallback:linear-gradient(200deg,#2d4152,#0b0f12)"><img src="assets/photos/02.jpg" alt="Photograph by Dev" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></div></figure>
-      <figure class="fan__card" data-pos="0" style="margin:0"><div class="frame frame--me" style="height:100%"><img src="assets/me/dev.jpg" alt="Dev Gothi" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></div></figure>
-      <figure class="fan__card" data-pos="1" style="margin:0"><div class="frame" style="height:100%;--fallback:linear-gradient(150deg,#344a2e,#0c0f0a)"><img src="assets/photos/04.jpg" alt="Photograph by Dev" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></div></figure>
-      <figure class="fan__card" data-pos="2" style="margin:0"><div class="frame" style="height:100%;--fallback:linear-gradient(190deg,#4a3f30,#0f0d0b)"><img src="assets/photos/05.jpg" alt="Photograph by Dev" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></div></figure>
-    </div>
-
+    <figure class="me" data-reveal><img src="assets/me/dev.webp" alt="Dev Gothi smiling in an autumn forest" width="800" height="1000" loading="lazy"></figure>
     <h3 class="about__hi" data-reveal>Hi, I'm Dev.</h3>
     <p class="about__lead" data-reveal>Computer engineering student and founder in Ottawa. I build products people trust, from the database to the last pixel.</p>
 
@@ -340,41 +175,50 @@
           <span class="chip">Full-Stack</span><span class="chip">AI Automation</span><span class="chip">Computer Vision</span>
           <span class="chip">Data</span><span class="chip">Stripe</span><span class="chip">DevOps</span>
         </div>
-
         <h4 class="about__h" data-reveal>My Roots &amp; Foundation</h4>
         <p class="about__p" data-reveal>Computer Engineering Technology at Algonquin College, Ottawa (2027). Co-led Tech-Xtreme, a national-level tech fest, and mentor underprivileged kids.</p>
-
-        <h4 class="about__h" data-reveal>Life Behind the Lens</h4>
-        <p class="about__p" data-reveal style="margin-bottom:0">When I'm not shipping, I'm shooting. Photography taught me framing and restraint, and I use both in my interfaces. <a href="https://devphotography.vercel.app/" target="_blank" rel="noopener">See my photography →</a></p>
-        <div class="lens" data-reveal>
-          <a class="frame" href="https://devphotography.vercel.app/" target="_blank" rel="noopener" style="--fallback:linear-gradient(165deg,#5a4630,#120f0b)" aria-label="Photo 6"><img src="assets/photos/06.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></a>
-          <a class="frame" href="https://devphotography.vercel.app/" target="_blank" rel="noopener" style="--fallback:linear-gradient(200deg,#2d4152,#0b0f12)" aria-label="Photo 7"><img src="assets/photos/07.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></a>
-          <a class="frame" href="https://devphotography.vercel.app/" target="_blank" rel="noopener" style="--fallback:linear-gradient(170deg,#6a3a44,#140a0d)" aria-label="Photo 8"><img src="assets/photos/08.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></a>
-          <a class="frame" href="https://devphotography.vercel.app/" target="_blank" rel="noopener" style="--fallback:linear-gradient(150deg,#344a2e,#0c0f0a)" aria-label="Photo 9"><img src="assets/photos/09.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></a>
-        </div>
       </div>
-
       <div>
         <h4 class="about__h" data-reveal>My Journey</h4>
         <div class="journey">
           <div class="journey__item" data-reveal>
             <span class="journey__logo" style="background:#efeaff"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="#7c6cf0"/><path d="M24 34s-9-5.6-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.4-9 12-9 12Z" fill="#fff"/></svg></span>
-            <div><h3>Founder &amp; Full-Stack Developer</h3><p>SafeSpace — Anonymous Mental Wellness<br>Jan 2025 – Present</p></div>
+            <div><h3>Founder &amp; Full-Stack Developer</h3><p>SafeSpace<br>Jan 2025 – Present</p></div>
           </div>
           <div class="journey__item" data-reveal>
             <span class="journey__logo" style="background:#e8f4ee"><svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="9" fill="#0b6e4f"/><path d="M20 14h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#fff"/></svg></span>
-            <div><h3>IT Service Desk Co-op Student</h3><p>Muskoka Algonquin Healthcare, ON<br>Jan 2025 – Dec 2025</p></div>
+            <div><h3>IT Service Desk Co-op</h3><p>Muskoka Algonquin Healthcare<br>Jan 2025 – Dec 2025</p></div>
           </div>
           <div class="journey__item" data-reveal>
             <span class="journey__logo" style="background:#e9f3ec"><svg viewBox="0 0 48 48"><path d="M24 6 42 40H6Z" fill="#1f7a45"/><path d="M24 18l9 16H15Z" fill="#fff"/></svg></span>
-            <div><h3>Peer Tutor — Calculus &amp; DBMS</h3><p>Algonquin College, Ottawa<br>May 2024 – Dec 2024</p></div>
+            <div><h3>Peer Tutor — Calculus &amp; DBMS</h3><p>Algonquin College<br>May 2024 – Dec 2024</p></div>
           </div>
           <div class="journey__item" data-reveal>
             <span class="journey__logo" style="background:#e9f3ec"><svg viewBox="0 0 48 48"><path d="M24 8 44 18 24 28 4 18Z" fill="#1f7a45"/><path d="M12 22v9c0 3 5.4 5 12 5s12-2 12-5v-9l-12 6Z" fill="#1f7a45" opacity=".75"/></svg></span>
-            <div><h3>Computer Engineering Technology</h3><p>Algonquin College — Computing Science<br>Expected graduation 2027</p></div>
+            <div><h3>Computer Engineering Technology</h3><p>Algonquin College<br>Graduating 2027</p></div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ================= LIFE ================= -->
+  <section class="section wrap" id="life" data-section="life">
+    <h2 class="title" data-reveal>Life</h2>
+    <div class="life">
+      <div class="life__text">
+        <h3 class="life__h" data-reveal>Behind the <span class="pink">lens.</span></h3>
+        <p class="life__p" data-reveal>I love taking photographs. It's how I slow down and notice light, people and places.</p>
+        <div data-reveal><a class="btn btn--pink" href="https://devphotography.vercel.app/" target="_blank" rel="noopener">See my photography <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        <p class="life__also" data-reveal>Off the clock: gaming, movies, board games and a good book.</p>
+      </div>
+      <a class="polaroids" href="https://devphotography.vercel.app/" target="_blank" rel="noopener" data-open="See photos" aria-label="Open my photography site" data-reveal>
+        <span class="pol" style="--i:-2"><span class="frame" style="--fallback:linear-gradient(165deg,#c98a4b,#3b2414)"><img src="assets/photos/01.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></span></span>
+        <span class="pol" style="--i:-1"><span class="frame" style="--fallback:linear-gradient(200deg,#6d8fa8,#1b2733)"><img src="assets/photos/02.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></span></span>
+        <span class="pol" style="--i:2"><span class="frame" style="--fallback:linear-gradient(170deg,#b5654f,#2a1210)"><img src="assets/photos/03.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></span></span>
+        <span class="pol" style="--i:1"><span class="frame" style="--fallback:linear-gradient(150deg,#7e9a5c,#1c2614)"><img src="assets/photos/04.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></span></span>
+        <span class="pol" style="--i:0"><span class="frame" style="--fallback:linear-gradient(185deg,#d9a35a,#4a2a12)"><img src="assets/photos/05.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('frame--fallback');this.remove()"></span></span>
+      </a>
     </div>
   </section>
 
@@ -396,9 +240,250 @@
 
 </main>
 
+<!-- ================= CASE STUDY (opens over the page) ================= -->
+<div class="case" id="case" role="dialog" aria-modal="true" aria-labelledby="case-title" hidden>
+  <div class="case__bar">
+    <button class="case__back" type="button" data-case-close>← Back to projects</button>
+    <span class="case__name" id="case-title" data-case-title>Case study</span>
+    <button class="case__x" type="button" data-case-close aria-label="Close case study"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="case__scroll" data-case-scroll data-lenis-prevent>
+    <div class="case__body" data-case-body></div>
+  </div>
+</div>
+
+<template id="case-safespace" data-title="SafeSpace">
+  <article class="cs">
+    <header class="cs-hero wrap">
+      <span class="eyebrow mono" data-reveal>Case study 01 · Founder</span>
+      <h1 class="cs-title" data-reveal>SafeSpace</h1>
+      <p class="cs-lede" data-reveal>Say how you feel, <span class="pink">without</span> saying who you are.</p>
+      <dl class="cs-meta" data-reveal>
+        <div><dt class="mono">Role</dt><dd>Founder, solo build</dd></div>
+        <div><dt class="mono">Timeline</dt><dd>Jan 2025 – now</dd></div>
+        <div><dt class="mono">Stack</dt><dd>Next.js 14 · Supabase · Stripe</dd></div>
+        <div><dt class="mono">Status</dt><dd><a href="https://www.thesafespace.dev/" target="_blank" rel="noopener">Live ↗</a> · Android in review</dd></div>
+      </dl>
+    </header>
+
+    <section class="wrap"><div class="cs-cover" data-reveal><div class="card">
+          <div class="card__visual ss">
+            <div class="ss__phone">
+              <div class="ss__notch"></div>
+              <div class="ss__hdr"><b>Tonight</b><span class="ss__anon">anon · #4f2a</span></div>
+              <div class="ss__card"><small>Journal</small>Couldn't focus today. Exams are close and I keep comparing myself to everyone.</div>
+              <div class="ss__card ss__bubble"><small>AI coach</small>That's a lot to carry. What's one thing you finished this week that you're proud of?</div>
+              <div class="ss__card"><small>Weekly mood report</small>
+                <div class="ss__bars"><i style="--h:40%"></i><i style="--h:55%"></i><i style="--h:35%"></i><i style="--h:62%"></i><i style="--h:70%" class="is-hi"></i><i style="--h:58%"></i><i style="--h:80%" class="is-hi"></i></div>
+              </div>
+              <div class="ss__card ss__price"><span>Plus · regional pricing</span><b data-currency="$,€,£,₹,¥,A$,C$,R$">$</b></div>
+            </div>
+          </div>
+          <div class="card__text">
+            <h3 class="card__name">SafeSpace</h3>
+            <p class="card__desc">Anonymous mental-wellness platform with an AI journal coach. Built and shipped solo.</p>
+            <div class="card__inside"><span>Founder</span><i></i><span>2025 – Present</span></div>
+          </div>
+          <div class="card__logo"><b style="background:#a99bff;color:#15121f">S</b>SafeSpace</div>
+          </div></div></section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">Overview</span>
+      <div><p class="cs-sec__lead" data-reveal>An anonymous mental-wellness platform. Real-time support, an AI journal coach and weekly mood insights.</p></div>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">The problem</span>
+      <div>
+        <p class="cs-sec__lead" data-reveal>Most wellness apps ask who you are <span class="pink">before</span> you feel safe.</p>
+        <p class="cs-sec__body" data-reveal>Sign-ups, real names and social profiles keep people from opening up when they need it most.</p>
+      </div>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">Goals</span>
+      <div class="goals">
+        <div class="goal" data-reveal><b>Anonymous</b><p>No real name needed to get support.</p></div>
+        <div class="goal" data-reveal><b>Private</b><p>Data locked down at the database level.</p></div>
+        <div class="goal" data-reveal><b>Sustainable</b><p>A fair paid tier that works in any country.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">Process</span>
+      <ol class="steps">
+        <li data-reveal><b>Design</b><p>Calm, low-pressure flows for journaling and chat.</p></li>
+        <li data-reveal><b>Build</b><p>Next.js 14 App Router on Supabase with real-time messaging.</p></li>
+        <li data-reveal><b>Monetise</b><p>Stripe subscriptions, free trials and webhooks.</p></li>
+        <li data-reveal><b>Launch</b><p>PWA on Vercel edge, SEO, Android build to Google Play.</p></li>
+      </ol>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">Key features</span>
+      <div class="features">
+        <div class="feature" data-reveal><span class="feature__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg></span><b>Anonymous chat</b><p>Real-time messaging with no identity attached.</p></div>
+        <div class="feature" data-reveal><span class="feature__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4ZM13.5 6.5l4 4"/></svg></span><b>AI journal coach</b><p>Replies to entries with gentle prompts, not diagnoses.</p></div>
+        <div class="feature" data-reveal><span class="feature__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 16l4-5 3 3 5-7"/></svg></span><b>Weekly mood reports</b><p>Automated insights from your own entries.</p></div>
+        <div class="feature" data-reveal><span class="feature__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9Z"/></svg></span><b>Regional pricing</b><p>Freemium plans in 8 currencies.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">Challenges</span>
+      <div class="challenges">
+        <div class="challenge" data-reveal><b>Privacy that can't be bypassed</b><p>Row Level Security on Supabase, so even a modified client can't read other users' data.</p></div>
+        <div class="challenge" data-reveal><b>Billing that stays in sync</b><p>Stripe webhooks keep access matched to each subscription and trial.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">Results</span>
+      <div class="outcomes">
+        <div class="outcome" data-reveal><b>8</b><span>currencies</span></div>
+        <div class="outcome" data-reveal><b>3</b><span>platforms: web, PWA, Android</span></div>
+        <div class="outcome" data-reveal><b>1</b><span>builder</span></div>
+      </div>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">What I learned</span>
+      <p class="cs-sec__lead" data-reveal>Shipping solo means privacy and reliability first, polish second, new features last.</p>
+    </section>
+
+    <button class="next" type="button" data-case-open="retail-vision"><span class="mono">Next project →</span><span class="next__title">Retail Vision</span></button>
+  </article>
+</template>
+
+<template id="case-retail-vision" data-title="Retail Vision">
+  <article class="cs">
+    <header class="cs-hero wrap">
+      <span class="eyebrow mono" data-reveal>Case study 02 · Design &amp; CV</span>
+      <h1 class="cs-title" data-reveal>Retail Vision</h1>
+      <p class="cs-lede" data-reveal>Grocery checkout <span class="pink">without</span> the line.</p>
+      <dl class="cs-meta" data-reveal>
+        <div><dt class="mono">Role</dt><dd>Product design &amp; engineering</dd></div>
+        <div><dt class="mono">Timeline</dt><dd>In progress</dd></div>
+        <div><dt class="mono">Users</dt><dd>Shopper · Associate · Manager</dd></div>
+        <div><dt class="mono">Design</dt><dd><a href="https://www.figma.com/design/eJhV8ln7K7fIuAo1E1W9zR/Untitled?node-id=0-1" target="_blank" rel="noopener">Figma ↗</a> · 39 screens</dd></div>
+      </dl>
+    </header>
+
+    <section class="wrap"><div class="cs-cover" data-reveal><div class="card">
+          <div class="card__visual rv-collage">
+            <div class="rv-collage__l"><img src="assets/work/rv-scanner.webp" alt="" width="390" height="844"></div>
+            <div class="rv-collage__c">
+              <div class="rv-mark">
+                <b><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10"/></svg></b>
+                <span>Retail Vision</span>
+                <em>Smart ScanMart</em>
+              </div>
+            </div>
+            <div class="rv-collage__r">
+              <div><img src="assets/work/rv-map.webp" alt="" width="1440" height="960"></div>
+              <div><img src="assets/work/rv-evidence.webp" alt="" width="1440" height="960"></div>
+            </div>
+          </div>
+          <div class="card__meta">
+            <div><small>Product</small><span>Smart ScanMart</span></div>
+            <div><small>Year of Project</small><span>2025 – Present</span></div>
+            <div><small>Role</small><span>Design &amp; Engineering</span></div>
+            <div><small>Skills :</small><span>Computer Vision, UX</span></div>
+          </div>
+          </div></div></section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">Overview</span>
+      <div><p class="cs-sec__lead" data-reveal>Smart ScanMart: shoppers scan on their phone, in-store cameras verify, and associates resolve the rare mismatch.</p></div>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">The problem</span>
+      <div>
+        <p class="cs-sec__lead" data-reveal>Checkout lines are the <span class="pink">slowest</span> part of shopping.</p>
+        <p class="cs-sec__body" data-reveal>Self-checkout just moves the work to the shopper and the loss problem to the store.</p>
+      </div>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">Goals</span>
+      <div class="goals">
+        <div class="goal" data-reveal><b>Faster</b><p>Walk out without a checkout lane.</p></div>
+        <div class="goal" data-reveal><b>Fair</b><p>Never charge or accuse shoppers by mistake.</p></div>
+        <div class="goal" data-reveal><b>Useful</b><p>Give staff live answers, not more alerts.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="principle" data-reveal>
+        <span class="mono">Design principle</span>
+        <blockquote>Cameras <span class="serif">never</span> charge.</blockquote>
+        <p>Shoppers pay only for what they scan. A mismatch becomes a quick associate check.</p>
+      </div>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">Who it's for</span>
+      <div class="surfaces">
+        <div class="surface" data-reveal><b>17</b><h3>Shopper app</h3><p>Enter, scan, cart, split bill, exit pass.</p></div>
+        <div class="surface" data-reveal><b>2</b><h3>Associate app</h3><p>Task queue and a fast cart check.</p></div>
+        <div class="surface" data-reveal><b>20</b><h3>Manager console</h3><p>Live store map, evidence review, camera health.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">Process</span>
+      <ol class="steps">
+        <li data-reveal><b>Map</b><p>The full trip, from store entry to the exit gate.</p></li>
+        <li data-reveal><b>Design</b><p>Three apps for three roles, 39 screens in Figma.</p></li>
+        <li data-reveal><b>Stress-test</b><p>Edge cases first: failed scans, payments, produce.</p></li>
+        <li data-reveal><b>Build</b><p>Computer vision and live inventory, in progress.</p></li>
+      </ol>
+    </section>
+
+    <section class="wrap">
+      <div class="shots">
+        <figure class="shot shot--12 shot--phones" data-reveal>
+          <img src="assets/work/rv-scanner.webp" alt="Scanner screen" width="390" height="844" loading="lazy">
+          <img src="assets/work/rv-cart.webp" alt="Cart with running total" width="390" height="844" loading="lazy">
+          <img src="assets/work/rv-exit.webp" alt="Exit pass with QR code" width="390" height="844" loading="lazy">
+          <figcaption>Scan · Cart · Exit pass</figcaption>
+        </figure>
+        <figure class="shot shot--12" data-reveal>
+          <img src="assets/work/rv-overview.webp" alt="Store manager overview dashboard" width="1440" height="960" loading="lazy">
+          <figcaption>Manager overview</figcaption>
+        </figure>
+        <figure class="shot shot--6" data-reveal>
+          <img src="assets/work/rv-map.webp" alt="Store map heatmap of shelf activity" width="1440" height="960" loading="lazy">
+          <figcaption>Store map</figcaption>
+        </figure>
+        <figure class="shot shot--6" data-reveal>
+          <img src="assets/work/rv-evidence.webp" alt="Evidence review with clip and timeline" width="1440" height="960" loading="lazy">
+          <figcaption>Evidence review</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">Key decisions</span>
+      <div class="challenges">
+        <div class="challenge" data-reveal><b>Failure states first</b><p>Barcode not found, payment failed and produce by weight each get a clear screen.</p></div>
+        <div class="challenge" data-reveal><b>Evidence over alerts</b><p>Every flag shows a 12-second clip and a timeline. "Incorrect detection" is one tap.</p></div>
+        <div class="challenge" data-reveal><b>Real-time cart</b><p>Totals and stock update as items go in or out.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap cs-sec">
+      <span class="cs-sec__label mono">What's next</span>
+      <p class="cs-sec__lead" data-reveal>Train product recognition on in-store cameras and connect live inventory.</p>
+    </section>
+
+    <button class="next" type="button" data-case-open="safespace"><span class="mono">Next project →</span><span class="next__title">SafeSpace</span></button>
+  </article>
+</template>
+
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
-<script src="assets/vendor/SplitText.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
