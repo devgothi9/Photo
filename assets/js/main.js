@@ -103,7 +103,7 @@
     touchX = null;
   });
 
-  /* ---------- Résumé: shown inside the page ---------- */
+  /* ---------- Resume: shown inside the page ---------- */
   const resume = document.getElementById('resume');
   let resumeReturn = null;
   const closeResume = () => {

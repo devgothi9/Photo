@@ -624,7 +624,7 @@ a.xp:hover::after { color: var(--pink); transform: translate(2px, -2px); }
   .ss2__phone--b { right: 6%; top: 52%; }
 }
 
-/* Résumé viewer */
+/* Resume viewer */
 .resume { position: fixed; inset: 0; z-index: 270; display: flex; flex-direction: column; background: rgba(20, 16, 24, 0.9); }
 .resume[hidden] { display: none; }
 .resume__bar { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: calc(12px + env(safe-area-inset-top, 0px)) clamp(16px, 3vw, 32px) 12px; color: #fff; }
