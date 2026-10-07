@@ -623,3 +623,14 @@ a.xp:hover::after { color: var(--pink); transform: translate(2px, -2px); }
   .ss2__phone--a { right: 46%; top: 46%; }
   .ss2__phone--b { right: 6%; top: 52%; }
 }
+
+/* Résumé viewer */
+.resume { position: fixed; inset: 0; z-index: 270; display: flex; flex-direction: column; background: rgba(20, 16, 24, 0.9); }
+.resume[hidden] { display: none; }
+.resume__bar { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: calc(12px + env(safe-area-inset-top, 0px)) clamp(16px, 3vw, 32px) 12px; color: #fff; }
+.resume__bar b { font-weight: 700; }
+.resume__actions { display: flex; align-items: center; gap: 10px; }
+.resume__pdf { padding: 10px 16px; border-radius: 999px; background: var(--pink); color: #fff; font-weight: 700; font-size: 14px; }
+.resume__scroll { flex: 1; overflow-y: auto; overscroll-behavior: contain; display: grid; justify-items: center; gap: 18px; padding: 8px 16px 40px; }
+.resume__scroll img { width: min(860px, 100%); height: auto; border-radius: 6px; background: #fff; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
+html.resume-open, html.resume-open body { overflow: hidden; }

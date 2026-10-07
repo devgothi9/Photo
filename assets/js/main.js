@@ -103,6 +103,32 @@
     touchX = null;
   });
 
+  /* ---------- Résumé: shown inside the page ---------- */
+  const resume = document.getElementById('resume');
+  let resumeReturn = null;
+  const closeResume = () => {
+    if (resume.hidden) return;
+    resume.hidden = true;
+    root.classList.remove('resume-open');
+    if (lenis && !openId) lenis.start();
+    if (resumeReturn) resumeReturn.focus({ preventScroll: true });
+  };
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('[data-resume]');
+    if (t) {
+      e.preventDefault();
+      resumeReturn = t;
+      resume.hidden = false;
+      resume.querySelector('.resume__scroll').scrollTop = 0;
+      root.classList.add('resume-open');
+      if (lenis) lenis.stop();
+      resume.querySelector('.resume__close').focus({ preventScroll: true });
+      return;
+    }
+    if (e.target.closest('[data-resume-close]') || e.target === resume) closeResume();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !resume.hidden) { e.stopImmediatePropagation(); closeResume(); } }, true);
+
   /* ---------- Portrait: tilts toward the pointer with a soft glare ---------- */
   document.querySelectorAll('[data-tilt]').forEach((card) => {
     const glare = card.querySelector('.me__glare');
