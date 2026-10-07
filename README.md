@@ -15,14 +15,17 @@ Deploy by pointing Vercel / Netlify / GitHub Pages at the repo root. There is no
 
 | Path | What |
 | --- | --- |
-| `index.html` | Home: clay shelf hero → laptop-opening intro → stacked project cards → achievements → about (photo fan, journey) → contact |
+| `index.html` | Home: clay shelf hero → laptop that opens and launches the project cards → stacked project cards → about (photo fan, journey) → contact |
 | `work/*.html` | Case studies: SafeSpace, Retail Vision, Photography |
 | `assets/css/style.css` | All styles (tokens at the top) |
-| `assets/js/main.js` | Sidebar pill, pink cursor + "Click to Open", hero pop-in, laptop scroll, card stacking, photo fan, reveals |
+| `assets/js/main.js` | Sidebar pill, pink cursor + "Click to Open", hero pop-in, laptop fly-out, card stacking, photo fan, reveals |
 | `assets/work/` | Retail Vision screens exported from the Figma file |
 | `assets/img/desk.svg` | Desk illustration under the shelf |
 
 ## Add your photos
+
+Put a photo of yourself at `assets/me/dev.jpg` (portrait crop). It goes in the centre of the About Me photo fan; until then a DG monogram shows there.
+
 
 Drop your photos into `assets/photos/` named `01.jpg` … `09.jpg` (portrait crops look best for 01–05).
 They show up automatically in the About photo fan, the "Life Behind the Lens" strip and the Photography card.

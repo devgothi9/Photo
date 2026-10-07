@@ -165,20 +165,28 @@
   const build = () => {
     const mm = gsap.matchMedia();
 
-    // laptop opens as you scroll
+    // laptop opens, then the projects fly out of the screen
     const intro = document.querySelector('[data-intro]');
     if (intro) {
       const lid = intro.querySelector('[data-lid]');
       const laptop = intro.querySelector('[data-laptop]');
+      const tiles = gsap.utils.toArray(intro.querySelectorAll('[data-fly]'));
+      const spread = () => (tiles[0] ? tiles[0].offsetWidth * 0.62 : 120);
+      const lift = () => -Math.min(innerHeight * 0.36, 360);
       gsap.set('[data-intro-title], [data-intro-sub]', { opacity: 0.25, y: 30 });
       const tl = gsap.timeline({
-        scrollTrigger: { trigger: intro, start: 'top top', end: '+=160%', pin: true, scrub: 0.8, anticipatePin: 1 },
+        scrollTrigger: { trigger: intro, start: 'top top', end: '+=220%', pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true },
       });
-      tl.to('[data-intro-title]', { opacity: 1, y: 0, duration: 0.3, ease: 'none' }, 0)
-        .to('[data-intro-sub]', { opacity: 1, y: 0, duration: 0.3, ease: 'none' }, 0.05)
-        .to(lid, { rotateX: 0, duration: 0.6, ease: 'power2.inOut' }, 0.25)
-        .to('.intro__text', { opacity: 0, y: -60, duration: 0.3, ease: 'none' }, 0.75)
-        .to(laptop, { scale: 1.18, duration: 0.4, ease: 'none' }, 0.8);
+      tl.to('[data-intro-title]', { opacity: 1, y: 0, duration: 0.2, ease: 'none' }, 0)
+        .to('[data-intro-sub]', { opacity: 1, y: 0, duration: 0.2, ease: 'none' }, 0.04)
+        .to(lid, { rotateX: 0, duration: 0.35, ease: 'power2.inOut' }, 0.2)
+        .to('.intro__text', { opacity: 0, y: -80, duration: 0.15, ease: 'none' }, 0.58)
+        .to(tiles, {
+          y: lift, x: (i) => (i - 1) * spread(), rotate: (i) => (i - 1) * 7, scale: 1.75,
+          boxShadow: '0 40px 60px -20px rgba(0,0,0,0.45)',
+          duration: 0.4, stagger: 0.05, ease: 'power3.out',
+        }, 0.6)
+        .to(laptop, { y: 60, scale: 0.94, duration: 0.4, ease: 'none' }, 0.62);
     }
 
     // stacking project cards
